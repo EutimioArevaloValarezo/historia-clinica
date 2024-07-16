@@ -1,0 +1,24 @@
+{% extends "/layout/plantilla.html" %}
+{% block content %}
+
+<form action="/historia_clinica/agregar" method="post" enctype="multipart/form-data">
+
+    {% include "/historia-clinica/1-historia-clinica.html" %}
+    {% include "/historia-clinica/2-registro-paciente.html" %}
+    {% include "/historia-clinica/3-antecedentes-heredofamiliares.html" %}
+    {% include "/historia-clinica/4-antecedentes-personales.html" %}
+    {% include "/historia-clinica/5-habitos.html" %}
+    {% include "/historia-clinica/6-habitos-toxicos.html" %}
+    {% include "/historia-clinica/7-actividades-personales.html" %}
+    {% include "/historia-clinica/8-consulta.html" %}
+    {% include "/historia-clinica/9-inspeccion.html" %}
+    {% include "/historia-clinica/10-valoracion.html" %}
+    {% include "/historia-clinica/11-goniometria.html" %}
+    {% include "/historia-clinica/12-diagnostico.html" %}
+
+    <button type="submit" class="btn btn-primary">ACEPTAR</button>
+</form>
+
+
+
+{% endblock %}

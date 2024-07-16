@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-center card mt-5 w-75 mx-auto">
+    <div class="card-header text-center">
+        <h3>Hábitos</h3>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-12 text-center">
+                <img src="{{ url_for('static', filename='images/piramide-alimentos.jpg') }}"
+                    class="img-fluid rounded-start w-75"
+                    alt="piramide-alimenticia">
+            </div>
+        </div>
+
+        <div class="border row g-3 mt-2 pb-3 align-items-center">
+            <div class="col-md-2">
+                <h3 class="input-custom text-center">Nro. de Comidas</h3>
+            </div>
+            <div class="col-md-8">
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkEDDermatitisAtopica"
+                        value="Asma" name="ed=dermatitis-atopica">
+                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Una comida al
+                        día</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
+                    <label class="input-custom form-check-label" for="checkEDAcne">Dos comidas al día</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkEDUrticaria"
+                        name="ed-urticaria">
+                    <label class="input-custom form-check-label" for="checkEDUrticaria">Tres comidas al día</label>
+                </div>
+            </div>
+            <div class="form-floating col-md-2">
+                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Otra"
+                    name="ed-otra">
+                <label for="textareaEDOtra">Otra</label>
+            </div>
+        </div>
+
+        <div class="border row g-3 mt-2 pb-3 align-items-center">
+            <div class="col-md-2">
+                <h3 class="input-custom text-center">Tiempo entre comidas principales</h3>
+            </div>
+            <div class="col-md-10">
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="checkbox" id="checkEDDermatitisAtopica"
+                        value="Asma" name="ed=dermatitis-atopica">
+                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica"> Desayuno</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="checkbox" id="checkEDAcne" name="ed-acne">
+                    <label class="input-custom form-check-label" for="checkEDAcne">Almuerzo</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
+                        name="ed-urticaria">
+                    <label class="input-custom form-check-label" for="checkEDUrticaria">Merienda</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h3 class="input-custom text-center">Tiempo entre Refrigerios</h3>
+            </div>
+            <div class="col-md-8">
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkEDDermatitisAtopica"
+                        value="Asma" name="ed=dermatitis-atopica">
+                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Refrigerios: Cada 2
+                        horas</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
+                    <label class="input-custom form-check-label" for="checkEDAcne">Cada 3 horas</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkEDUrticaria"
+                        name="ed-urticaria">
+                    <label class="input-custom form-check-label" for="checkEDUrticaria">Cada 4 horas</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkEDUrticaria"
+                        name="ed-urticaria">
+                    <label class="input-custom form-check-label" for="checkEDUrticaria">Igual que las
+                        principales</label>
+                </div>
+            </div>
+            <div class="form-floating col-md-2">
+                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Otro tiempo"
+                    name="ed-otra">
+                <label for="textareaEDOtra">Otro tiempo</label>
+            </div>
+        </div>
+
+        <div class="border row g-3 mt-2 pb-3 align-items-center">
+            <div class="col-md-2">
+                <h3 class="input-custom text-center">Consumo de agua</h3>
+            </div>
+            <div class="form-floating col-md-10">
+                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Nro. de vasos al día"
+                    name="ed-otra">
+                <label for="textareaEDOtra">Nro. de vasos al día</label>
+            </div>
+        </div>
+
+    </div>
+</div>
