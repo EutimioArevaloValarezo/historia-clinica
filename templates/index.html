@@ -2,6 +2,31 @@
 
 {% block content %}
 
+<style>
+    /* Position text in the middle of the page/image */
+    .bg-text {
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/opacity/see-through */
+        color: white;
+        font-weight: bold;
+        border: 3px solid #f1f1f1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
 
+<div class="bg-text">
+    <h2>Registro de episodios de salud y enfermedad de una persona</h2>
+    <h1 style="font-size:50px">SISTEMA DE HISTORIAS CLÍNICAS DIGITALES</h1>
+    <p>Desarrollado en Python y Flask</p>
+</div>
 
 {% endblock %}

@@ -1,0 +1,105 @@
+{% extends "/layout/plantilla.html" %}
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+        function togglePassword(input) {
+            if (input.attr('type') === 'password') {
+                input.attr('type', 'text');
+            } else {
+                input.attr('type', 'password');
+            }
+        }
+
+        $('#btn_pass_actual').click(function () {
+            togglePassword($('#input_pass_actual'));
+        });
+
+        $('#btn_pass_nueva').click(function () {
+            togglePassword($('#input_pass_nueva'));
+        });
+
+        $(document).ready(function () {
+            $('#swtich_contrasenia').change(function () {
+                var passwordInputs = $('#div-contenedor input[type="password"]');
+                if ($(this).is(':checked')) {
+                    $('#div-contenedor').removeClass('visually-hidden');
+                    passwordInputs.val('');
+                } else {
+                    $('#div-contenedor').addClass('visually-hidden');
+                    passwordInputs.val('');
+                }
+            });
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card mt-4 text-center">
+            <div class="card-header">
+                <h3>Registrar</h3>
+            </div>
+            <div class="card-body">
+                <form name="form_editar_usuario">
+                    <div class="alert alert-dismissible visually-hidden">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <strong id="alertaTitulo"></strong>
+                        <p id="alertaCuerpo"></p>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="id_nombre" class="form-label">Nombre: </label>
+                        <input id="id_nombre" type="text" name="get_nombre" placeholder="Nombre" class="form-control"
+                            value="{{ session['user']['nombres'] }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="id_apellido" class="form-label">Apellido: </label>
+                        <input id="id_apellido" type="text" name="get_apellido" placeholder="Apellido"
+                            class="form-control" value="{{ session['user']['apellidos'] }}">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="id_usuario" class="form-label">Cédula: </label>
+                        <input id="id_usuario" type="text" name="get_usuario" placeholder="Usuario" class="form-control"
+                            value="{{ session['user']['cedula'] }}">
+                    </div>
+
+                    <div class="form-check form-switch mt-4 d-flex justify-content-center">
+                        <input class="form-check-input" type="checkbox" id="swtich_contrasenia" name="get_switch">
+                        <label class="form-check-label" for="swtich_contrasenia"> Cambiar contraseña</label>
+                    </div>
+                    <div id="div-contenedor" class="contenedor mt-3 visually-hidden">
+                        <div class="form-group m-2">
+                            <label for="id_nombre" class="form-label">Ingresar contraseña actual:</label>
+                            <div class="input-group">
+
+                                <input type="password" id="input_pass_actual" name="get_contrasenia_actual"
+                                    class="form-control" placeholder="Contaseña actual">
+                                <button class="btn btn-outline-primary" type="button" id="btn_pass_actual"><i
+                                        class="fa fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group m-2">
+                            <label for="id_nombre" class="form-label">Ingresar contraseña nueva:</label>
+                            <div class="input-group">
+                                <input type="password" id="input_pass_nueva" name="get_contrasenia_nueva"
+                                    class="form-control" placeholder="Contaseña nueva">
+                                <button class="btn btn-outline-primary" type="button" id="btn_pass_nueva"><i
+                                        class="fa fa-eye"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-block mt-4">Actualizar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/credenciales.js') }}"></script>
+
+{% endblock %}
