@@ -1,7 +1,7 @@
 {% extends "/layout/plantilla.html" %}
 {% block content %}
 
-<form action="/historia_clinica/agregar" method="post" enctype="multipart/form-data">
+<form action="/agrega_historia_clinica" method="post" enctype="multipart/form-data">
 
     {% include "/historia-clinica/1-historia-clinica.html" %}
     {% include "/historia-clinica/2-registro-paciente.html" %}
@@ -16,7 +16,7 @@
     {% include "/historia-clinica/11-goniometria.html" %}
     {% include "/historia-clinica/12-diagnostico.html" %}
 
-    <button type="submit" class="btn btn-primary">ACEPTAR</button>
+    <button type="submit" class="btn btn-primary d-flex justify-content-center card w-75 mx-auto mt-5 mb-5">GUARDAR HISTORIA CLÍNICA</button>
 </form>
 
 

@@ -1,0 +1,68 @@
+{% extends "/layout/plantilla.html" %}
+{% block content %}
+
+<div class="overflow-auto">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-resposive text-center">
+                    <thead>
+                        <tr class="table-dark">
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">Cedula</th>
+                            <th scope="col">Nro. de Expediente</th>
+                            <th scope="col">Cama/Cubiculo</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Exportar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for historia in historias %}
+                        <tr>
+                            <td>
+                                {{ historia['registro_paciente']['nombres'] +" "+ historia['registro_paciente']['apellidos']  }}
+                            </td>
+                            <td>
+                                {{ historia['registro_paciente']['sexo'] }}
+                            </td>
+                            <td>
+                                {{ historia['registro_paciente']['cedula'] }}
+                            </td>
+                            <td>
+                                {{ historia['historia_clinica']['nro_expediente'] }}
+                            </td>
+                            <td>
+                                {{ historia['historia_clinica']['cama_cubiculo'] }}
+                            </td>
+                            <td>
+                                {{ historia['historia_clinica']['fecha'] }}
+                            </td>
+                            <td>
+                                {{ historia['historia_clinica']['hora'] }}
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                                    data-bs-target="#estadisticaModal" data-id="{{ historia['_id'] }}"><i
+                                        class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    data-bs-target="#estadisticaModal" data-id="{{ historia['_id'] }}"><i
+                                        class="fas fa-download"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

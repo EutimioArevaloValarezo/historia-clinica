@@ -108,23 +108,24 @@
             </div>
             <div class="col-md-2 text-center">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="radioSiQuirurgico"
-                        value="Asma" name="ed=dermatitis-atopica" name="">
+                    <input class="input-custom form-check-input" type="radio" id="radioSiQuirurgico" value=True
+                        name="ed=dermatitis-atopica" name="tiene_cirugia">
                     <label class="input-custom form-check-label" for="radioSiQuirurgico">Sí</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">No</label>
+                    <input class="input-custom form-check-input" type="radio" id="radioNoQuirurgico" value=False
+                        name="tiene_cirugia">
+                    <label class="input-custom form-check-label" for="radioNoQuirurgico">No</label>
                 </div>
             </div>
             <div class="form-floating col-md-3">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Área"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Área</label>
+                <input type="text" class="input-custom form-control" id="textAreaCirugia" placeholder="Área"
+                    name="area_cirugia">
+                <label for="textAreaCirugia">Área</label>
             </div>
             <div class="form-floating col-md-5">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Motivo"
-                    name="ed-otra">
+                <input type="text" class="input-custom form-control" id="textMotivoCirugia" placeholder="Motivo"
+                    name="motivo_cirugia">
                 <label for="textareaEDOtra">Motivo</label>
             </div>
         </div>
@@ -134,29 +135,29 @@
                 <h3 class="input-custom text-center">Utilización de Fármacos</h3>
             </div>
             <div class="form-floating col-md-3">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra"
-                    placeholder="Nombre del Fármaco" name="ed-otra">
-                <label for="textareaEDOtra">Nombre del Fármaco</label>
+                <input type="text" class="input-custom form-control" id="textNombreFarmaco"
+                    placeholder="Nombre del Fármaco" name="nombre_farmaco">
+                <label for="textNombreFarmaco">Nombre del Fármaco</label>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra"
-                    placeholder="Farmácos por anticoncepción" name="ed-otra">
-                <label for="textareaEDOtra">Farmácos por anticoncepción</label>
+                <input type="text" class="input-custom form-control" id="textFarmacoAnticonceptivo"
+                    placeholder="Farmácos por anticoncepción" name="farmaco_anticoceptivo">
+                <label for="textFarmacoAnticonceptivo">Farmácos por anticoncepción</label>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra"
-                    placeholder="Farmácos por anticoncepción" name="ed-otra">
-                <label for="textareaEDOtra">Farmácos por otro motivo</label>
+                <input type="text" class="input-custom form-control" id="textOtroMotivo"
+                    placeholder="Farmácos por otro motivo" name="farmaco_otro_motivo">
+                <label for="textOtroMotivo">Farmácos por otro motivo</label>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra"
-                    placeholder="Farmácos por anticoncepción" name="ed-otra">
-                <label for="textareaEDOtra">Frecuencia</label>
+                <input type="text" class="input-custom form-control" id="textFarmacoFrecuencia" placeholder="Frecuencia"
+                    name="farmaco_frecuencia">
+                <label for="textFarmacoFrecuencia">Frecuencia</label>
             </div>
             <div class="form-floating col-md-1">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra"
-                    placeholder="Farmácos por anticoncepción" name="ed-otra">
-                <label for="textareaEDOtra">Dosificación</label>
+                <input type="text" class="input-custom form-control" id="textFarmacoDosificacion"
+                    placeholder="Dosificación" name="farmaco_dosificacion">
+                <label for="textFarmacoDosificacion">Dosificación</label>
             </div>
         </div>
 
@@ -167,31 +168,36 @@
             </div>
             <div class="col-md-8">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDDermatitisAtopica"
-                        value="Asma" name="ed=dermatitis-atopica">
-                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Implante
+                    <input class="input-custom form-check-input" type="checkbox" id="checkDiu" name="implante_diu">
+                    <label class="input-custom form-check-label" for="checkDiu">Implante
                         Anticonceptivo Diu</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">Mamoplastia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkMamoplastia"
+                        name="implante_mamoplastia">
+                    <label class="input-custom form-check-label" for="checkMamoplastia">Mamoplastia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
-                        name="ed-urticaria">
-                    <label class="input-custom form-check-label" for="checkEDUrticaria">Implantes de
+                    <input class="input-custom form-check-input" type="checkbox" id="checkArticulaciones"
+                        name="implante_articulacion">
+                    <label class="input-custom form-check-label" for="checkArticulaciones">Implantes de
                         articulaciones</label>
-                    <input type="text" class="form-control" placeholder="Area:" hidden>
+                    <div class="form-floating">
+                        <input type="text" class="input-custom form-control" id="textAreaArticulacion"
+                            placeholder="Área" name="area_articulacion">
+                        <label for="textAreaArticulacion">Área</label>
+                    </div>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDNinguna" name="ed-ninguna">
-                    <label class="input-custom form-check-label" for="checkEDNinguna">Ninguna</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkNingunImplante"
+                        name="ningun_implante">
+                    <label class="input-custom form-check-label" for="checkNingunImplante">Ninguna</label>
                 </div>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Otra"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Otra</label>
+                <input type="text" class="input-custom form-control" id="textOtroImplante" placeholder="Otro"
+                    name="otro_implante">
+                <label for="textOtroImplante">Otro</label>
             </div>
         </div>
 
@@ -201,42 +207,42 @@
             </div>
             <div class="col-md-8">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDDermatitisAtopica"
-                        value="Asma" name="ed=dermatitis-atopica">
-                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Problemas
+                    <input class="input-custom form-check-input" type="checkbox" id="checkProblemaPlaquetario"
+                        name="transtorno_plaquetas">
+                    <label class="input-custom form-check-label" for="checkProblemaPlaquetario">Problemas
                         plaquetarios</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">Anemias</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkAnemias"
+                        name="transtorno_anemia">
+                    <label class="input-custom form-check-label" for="checkAnemias">Anemias</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">Coagulación excesiva</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkCoagulacionExcesiva"
+                        name="transtorno_coagulacion">
+                    <label class="input-custom form-check-label" for="checkCoagulacionExcesiva">Coagulación
+                        excesiva</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
-                        name="ed-urticaria">
-                    <label class="input-custom form-check-label" for="checkEDUrticaria">Hemofilia</label>
-                    <input type="text" class="form-control" placeholder="Area:" hidden>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkHemofilia"
+                        name="transtorno_hemofilia">
+                    <label class="input-custom form-check-label" for="checkHemofilia">Hemofilia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
-                        name="ed-urticaria">
-                    <label class="input-custom form-check-label" for="checkEDUrticaria">Trombocitopenia</label>
-                    <input type="text" class="form-control" placeholder="Area:" hidden>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkTrombocitopenia"
+                        name="transtorno_trombocitopenia">
+                    <label class="input-custom form-check-label" for="checkTrombocitopenia">Trombocitopenia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
-                        name="ed-urticaria">
-                    <label class="input-custom form-check-label" for="checkEDUrticaria">Trombocitosis</label>
-                    <input type="text" class="form-control" placeholder="Area:" hidden>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkTrombocitosis"
+                        name="transtorno_trombocitosis">
+                    <label class="input-custom form-check-label" for="checkTrombocitosis">Trombocitosis</label>
                 </div>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Otra"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Otra</label>
+                <input type="text" class="input-custom form-control" id="textOtroTranstorno" placeholder="Otro"
+                    name="transtorno_otro">
+                <label for="textOtroTranstorno">Otro</label>
             </div>
         </div>
 
@@ -247,29 +253,30 @@
             </div>
             <div class="col-md-8">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDDermatitisAtopica"
-                        value="Asma" name="ed=dermatitis-atopica">
-                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Esquizofrenia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkEsquizofrenia" value="Asma"
+                        name="mental_esquizofrenia">
+                    <label class="input-custom form-check-label" for="checkEsquizofrenia">Esquizofrenia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">Trastorno bipolar</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkBipolar"
+                        name="mental_bipolar">
+                    <label class="input-custom form-check-label" for="checkBipolar">Trastorno bipolar</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
-                        name="ed-urticaria">
-                    <label class="input-custom form-check-label" for="checkEDUrticaria">Demencia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkDemencia"
+                        name="mental_demencia">
+                    <label class="input-custom form-check-label" for="checkDemencia">Demencia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDVitiligo"
-                        name="ed-vitiligo">
-                    <label class="input-custom form-check-label" for="checkEDVitiligo">Trastorno depresivo</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkDepresivo"
+                        name="mental_depresivo">
+                    <label class="input-custom form-check-label" for="checkDepresivo">Trastorno depresivo</label>
                 </div>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Otra"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Otra</label>
+                <input type="text" class="input-custom form-control" id="textMentalOtro" placeholder="Otra"
+                    name="mental_otra">
+                <label for="textMentalOtro">Otra</label>
             </div>
         </div>
 
@@ -280,29 +287,30 @@
             </div>
             <div class="col-md-8">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDDermatitisAtopica"
-                        value="Asma" name="ed=dermatitis-atopica">
-                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Anorexia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkAnorexia" value="Asma"
+                        name="transtorno_anorexia">
+                    <label class="input-custom form-check-label" for="checkAnorexia">Anorexia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">Trastorno por atracón</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkAtracon"
+                        name="transtorno_atracon">
+                    <label class="input-custom form-check-label" for="checkAtracon">Trastorno por atracón</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
-                        name="ed-urticaria">
-                    <label class="input-custom form-check-label" for="checkEDUrticaria">Bulimia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkBulimia"
+                        name="transtorno_bulimia">
+                    <label class="input-custom form-check-label" for="checkBulimia">Bulimia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDVitiligo"
-                        name="ed-vitiligo">
-                    <label class="input-custom form-check-label" for="checkEDVitiligo">Ninguna</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkAlimenticioNinguno"
+                        name="transtorno_alimenticio_ningun">
+                    <label class="input-custom form-check-label" for="checkAlimenticioNinguno">Ninguna</label>
                 </div>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Otra"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Otra</label>
+                <input type="text" class="input-custom form-control" id="textOtroAlimenticio" placeholder="Otra"
+                    name="transtorno_alimenticio_otro">
+                <label for="textOtroAlimenticio">Otra</label>
             </div>
         </div>
 
@@ -312,34 +320,34 @@
             </div>
             <div class="col-md-8">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDDermatitisAtopica"
-                        value="Asma" name="ed=dermatitis-atopica">
-                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Claustrofobia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkClaustrofobia"
+                        name="fobia_claustrofobia">
+                    <label class="input-custom form-check-label" for="checkClaustrofobia">Claustrofobia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">Hidrofobia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkHidrofobia" name="fobia_hidrofobia">
+                    <label class="input-custom form-check-label" for="checkHidrofobia">Hidrofobia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
-                        name="ed-urticaria">
-                    <label class="input-custom form-check-label" for="checkEDUrticaria">Iatrofobia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkIatrofobia"
+                        name="fobia_iatrofobia">
+                    <label class="input-custom form-check-label" for="checkIatrofobia">Iatrofobia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDVitiligo"
-                        name="ed-vitiligo">
-                    <label class="input-custom form-check-label" for="checkEDVitiligo">Hafefobia</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkHefefobia"
+                        name="fobia_hafefobia">
+                    <label class="input-custom form-check-label" for="checkHefefobia">Hafefobia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkEDVitiligo"
-                        name="ed-vitiligo">
-                    <label class="input-custom form-check-label" for="checkEDVitiligo">Ninguna</label>
+                    <input class="input-custom form-check-input" type="checkbox" id="checkFobiaNinguna"
+                        name="fobia_ninguna">
+                    <label class="input-custom form-check-label" for="checkFobiaNinguna">Ninguna</label>
                 </div>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Otra"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Otra</label>
+                <input type="text" class="input-custom form-control" id="textFobiaOtra" placeholder="Otra"
+                    name="fobia_otra">
+                <label for="textFobiaOtra">Otra</label>
             </div>
         </div>
     </div>
