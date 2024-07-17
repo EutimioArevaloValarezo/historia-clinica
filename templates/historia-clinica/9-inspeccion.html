@@ -1,0 +1,510 @@
+<div class="d-flex justify-content-center card mt-5 w-75 mx-auto">
+    <div class="card-header text-center">
+        <h3>Inspección</h3>
+    </div>
+    <div class="card-body">
+        <div class="border row g-3 pb-3 align-items-center">
+            <div class="col-md-12 text-center">
+                <h4>Valoración postural en los diferentes planos anatómicos</h4>
+            </div>
+        </div>
+        <div class="border row g-3 pb-3 align-items-center">
+            <div class="col-md-12 text-center">
+                <h4>Plano antero-posterior (vista anterior)</h4>
+            </div>
+            <div class="col-md-12">
+                <h5>Puntos de relación anatómica del plano anterior</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                1. Entrecejo: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiEntrecejo" value=True
+                        name="inspeccion_entrecejo">
+                    <label class="input-custom form-check-label" for="checkSiEntrecejo">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoEntrecejo" value=False
+                        name="inspeccion_entrecejo">
+                    <label class="input-custom form-check-label" for="checkNoEntrecejo">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                2. Punta de la nariz: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiPuntaNariz" value=True
+                        name="inspeccion_punta_nariz">
+                    <label class="input-custom form-check-label" for="checkSiPuntaNariz">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoPuntaNariz" value=False
+                        name="inspeccion_punta_nariz">
+                    <label class="input-custom form-check-label" for="checkNoPuntaNariz">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                3. Ángulo mentoniano: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiAnguloMentoniano" value=True
+                        name="inspeccion_angulo_mentoniano">
+                    <label class="input-custom form-check-label" for="checkSiAnguloMentoniano">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoAnguloMentoniano" value=False
+                        name="inspeccion_angulo_mentoniano">
+                    <label class="input-custom form-check-label" for="checkNoAnguloMentoniano">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                4. Manubrio esteral: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiManubrioEsteral" value=True
+                        name="inspeccion_manubrio_esteral">
+                    <label class="input-custom form-check-label" for="checkSiManubrioEsteral">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoManubrioEsteral" value=False
+                        name="inspeccion_manubrio_esteral">
+                    <label class="input-custom form-check-label" for="checkNoManubrioEsteral">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                5. Apófisis xifoides: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiApofisisXifoides" value=True
+                        name="inspeccion_apofisis_xifoides">
+                    <label class="input-custom form-check-label" for="checkSiApofisisXifoides">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoApofisisXifoides" value=False
+                        name="inspeccion_apofisis_xifoides">
+                    <label class="input-custom form-check-label" for="checkNoApofisisXifoides">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                6. Ombligo: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiOmbligo" value=True
+                        name="inspeccion_ombligo">
+                    <label class="input-custom form-check-label" for="checkSiOmbligo">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoOmbligo" value=False
+                        name="inspeccion_ombligo">
+                    <label class="input-custom form-check-label" for="checkNoOmbligo">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                7. Sínfisis púbica: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiSinfisisPubica" value=True
+                        name="inspeccion_sinfisis_pubica">
+                    <label class="input-custom form-check-label" for="checkSiSinfisisPubica">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoSinfisisPubica" value=False
+                        name="inspeccion_sinfisis_pubica">
+                    <label class="input-custom form-check-label" for="checkNoSinfisisPubica">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                8. Centro de la base de sustentación: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiCentroSustentacion" value=True
+                        name="inspeccion_centro_sustentacion">
+                    <label class="input-custom form-check-label" for="checkSiCentroSustentacion">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoCentroSustentacion" value=False
+                        name="inspeccion_centro_sustentacion">
+                    <label class="input-custom form-check-label" for="checkNoCentroSustentacion">No</label>
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-4">
+                <h5>Alineación de las estructuras en un plano anterior</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                1. Altura de los ojos: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiAlturaOjos" value=True
+                        name="inspeccion_altura_ojos">
+                    <label class="input-custom form-check-label" for="checkSiAlturaOjos">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoAlturaOjos" value=False
+                        name="inspeccion_altura_ojos">
+                    <label class="input-custom form-check-label" for="checkNoAlturaOjos">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                2. Pabellones auriculares: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiPabellonesAuriculares"
+                        value=True name="inspeccion_pabellones_auriculares">
+                    <label class="input-custom form-check-label" for="checkSiPabellonesAuriculares">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoPabellonesAuriculares"
+                        value=False name="inspeccion_pabellones_auriculares">
+                    <label class="input-custom form-check-label" for="checkNoPabellonesAuriculares">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                3. Altura del acromion: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiAlturaAcromion" value=True
+                        name="inspeccion_altura_acromion">
+                    <label class="input-custom form-check-label" for="checkSiAlturaAcromion">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoAlturaAcromion" value=False
+                        name="inspeccion_altura_acromion">
+                    <label class="input-custom form-check-label" for="checkNoAlturaAcromion">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                4. Línea de los pliegues infra-mamarios: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiInframamarios" value=True
+                        name="inspeccion_inframamarios">
+                    <label class="input-custom form-check-label" for="checkSiInframamarios">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoInframamarios" value=False
+                        name="inspeccion_inframamarios">
+                    <label class="input-custom form-check-label" for="checkNoInframamarios">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                5. Espinas iliacas superiores: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiIliacasSuperiores" value=True
+                        name="inspeccion_iliacas_superiores">
+                    <label class="input-custom form-check-label" for="checkSiIliacasSuperiores">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoIliacasSuperiores" value=False
+                        name="inspeccion_iliacas_superiores">
+                    <label class="input-custom form-check-label" for="checkNoIliacasSuperiores">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                6. Base de la patela: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiBasePatela" value=True
+                        name="inspeccion_base_patela">
+                    <label class="input-custom form-check-label" for="checkSiBasePatela">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoBasePatela" value=False
+                        name="inspeccion_base_patela">
+                    <label class="input-custom form-check-label" for="checkNoBasePatela">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                7. Maléolos internos: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiMaleolosInternos" value=True
+                        name="inspeccion_maleolos_internos">
+                    <label class="input-custom form-check-label" for="checkSiMaleolosInternos">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoMaleolosInternos" value=False
+                        name="inspeccion_maleolos_internos">
+                    <label class="input-custom form-check-label" for="checkNoMaleolosInternos">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="border row g-3 pb-3 align-items-center">
+            <div class="col-md-12 text-center">
+                <h4>Plano antero-posterior (vista anterior)</h4>
+            </div>
+            <div class="col-md-12">
+                <h5>Lineas Verticales</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                1. Protuberancia occipital: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiProtuberanciaOccipital"
+                        value=True name="inspeccion_protuberancia_occipital">
+                    <label class="input-custom form-check-label" for="checkSiProtuberanciaOccipital">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoProtuberanciaOccipital"
+                        value=False name="inspeccion_protuberancia_occipital">
+                    <label class="input-custom form-check-label" for="checkNoProtuberanciaOccipital">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                2. Apófisis espinosas de las vértebras: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiApofisisEspinosas" value=True
+                        name="inspeccion_apofisis_espinosas">
+                    <label class="input-custom form-check-label" for="checkSiApofisisEspinosas">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoApofisisEspinosas" value=False
+                        name="inspeccion_apofisis_espinosas">
+                    <label class="input-custom form-check-label" for="checkNoApofisisEspinosas">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                3. Línea Interglútea: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiLineaInterglutea" value=True
+                        name="inspeccion_linea_interglutea">
+                    <label class="input-custom form-check-label" for="checkSiLineaInterglutea">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoLineaInterglutea" value=False
+                        name="inspeccion_linea_interglutea">
+                    <label class="input-custom form-check-label" for="checkNoLineaInterglutea">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                4. Centro de la base de sustentación: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiCentroSustentacion2" value=True
+                        name="inspeccion_centro_sustentacion_2">
+                    <label class="input-custom form-check-label" for="checkSiCentroSustentacion2">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoCentroSustentacion2" value=False
+                        name="inspeccion_centro_sustentacion_2">
+                    <label class="input-custom form-check-label" for="checkNoCentroSustentacion2">No</label>
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-4">
+                <h5>Lineas Horizontales</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                5. Pabellones auriculares: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiPabellonesAuriculares2"
+                        value=True name="inspeccion_pabellones_auriculares_2">
+                    <label class="input-custom form-check-label" for="checkSiPabellonesAuriculares2">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoPabellonesAuriculares2"
+                        value=False name="inspeccion_pabellones_auriculares_2">
+                    <label class="input-custom form-check-label" for="checkNoPabellonesAuriculares2">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                6. Ángulo de la escapula: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiAnguloEscapula"
+                        value=True name="inspeccion_angulo_escapula">
+                    <label class="input-custom form-check-label" for="checkSiAnguloEscapula">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoAnguloEscapula"
+                        value=False name="inspeccion_angulo_escapula">
+                    <label class="input-custom form-check-label" for="checkNoAnguloEscapula">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                7. Espinas iliacas postero superiores: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiEspinaIliacas" value=True
+                        name="inspeccion_espina_iliacas">
+                    <label class="input-custom form-check-label" for="checkSiEspinaIliacas">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoEspinaIliacas" value=False
+                        name="inspeccion_espina_iliacas">
+                    <label class="input-custom form-check-label" for="checkNoEspinaIliacas">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                8. Pliegue glúteo inferior: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiGluteoInferior" value=True
+                        name="inspeccion_gluteo_inferior">
+                    <label class="input-custom form-check-label" for="checkSiGluteoInferior">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoGluteoInferior" value=False
+                        name="inspeccion_gluteo_inferior">
+                    <label class="input-custom form-check-label" for="checkNoGluteoInferior">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                9. Pliegue poplíteo: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiPlieguePopliteo" value=True
+                        name="inspeccion_pliegue_popliteo">
+                    <label class="input-custom form-check-label" for="checkSiPlieguePopliteo">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoPlieguePopliteo" value=False
+                        name="inspeccion_pliegue_popliteo">
+                    <label class="input-custom form-check-label" for="checkNoPlieguePopliteo">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                10. Calcáneos: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiCalcaneos" value=True
+                        name="inspeccion_calcaneos">
+                    <label class="input-custom form-check-label" for="checkSiCalcaneos">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoCalcaneos" value=False
+                        name="inspeccion_calcaneos">
+                    <label class="input-custom form-check-label" for="checkNoCalcaneos">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="border row g-3 pb-3 align-items-center">
+            <div class="col-md-12 mt-4 text-center">
+                <h4>Plano sagital (vista lateral derecho)</h4>
+            </div>
+            <div class="col-md-12">
+                <h5>Puntos de relación anatómica de lateral derecho</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                1. Conducto auditivo externo: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiConductoAuditivoDerecho"
+                        value=True name="inspeccion_conducto_auditivo_derecho">
+                    <label class="input-custom form-check-label" for="checkSiConductoAuditivoDerecho">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoConductoAuditivoDerecho"
+                        value=False name="inspeccion_conducto_auditivo_derecho">
+                    <label class="input-custom form-check-label" for="checkNoConductoAuditivoDerecho">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                2. Proyección del Acromion: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiAcromionDerecho" value=True
+                        name="inspeccion_acromion_derecho">
+                    <label class="input-custom form-check-label" for="checkSiAcromionDerecho">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoAcromionDerecho" value=False
+                        name="inspeccion_acromion_derecho">
+                    <label class="input-custom form-check-label" for="checkNoAcromionDerecho">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                3. Proyección de los cuerpos de las vértebras lumbares: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiVertebrasDerecho" value=True
+                        name="inspeccion_vertebras_derecho">
+                    <label class="input-custom form-check-label" for="checkSiVertebrasDerecho">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoVertebrasDerecho" value=False
+                        name="inspeccion_vertebras_derecho">
+                    <label class="input-custom form-check-label" for="checkNoVertebrasDerecho">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                4. Trocánter mayor: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiTrocanterDerecho" value=True
+                        name="inspeccion_trocante_derecho">
+                    <label class="input-custom form-check-label" for="checkSiTrocanterDerecho">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoTrocanterDerecho" value=False
+                        name="inspeccion_trocante_derecho">
+                    <label class="input-custom form-check-label" for="checkNoTrocanterDerecho">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                5. Ligeramente delante del maléolo externo: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiMaleoloDerecho" value=True
+                        name="inspeccion_maleolo_derecho">
+                    <label class="input-custom form-check-label" for="checkSiMaleoloDerecho">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoMaleoloDerecho" value=False
+                        name="inspeccion_maleolo_derecho">
+                    <label class="input-custom form-check-label" for="checkNoMaleoloDerecho">No</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="border row g-3 pb-3 align-items-center">
+            <div class="col-md-12 mt-4 text-center">
+                <h4>Plano sagital (vista lateral izquierdo)</h4>
+            </div>
+            <div class="col-md-12">
+                <h5>Puntos de relación anatómica de lateral izquierdo</h5>
+            </div>
+            <div class="col-md-2 text-center">
+                1. Conducto auditivo externo: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiConductoAuditivoIzquierdo"
+                        value=True name="inspeccion_conducto_auditivo_izquierdo">
+                    <label class="input-custom form-check-label" for="checkSiConductoAuditivoIzquierdo">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoConductoAuditivoIzquierdo"
+                        value=False name="inspeccion_conducto_auditivo_izquierdo">
+                    <label class="input-custom form-check-label" for="checkNoConductoAuditivoIzquierdo">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                2. Proyección del Acromion: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiAcromionIzquierdo" value=True
+                        name="inspeccion_acromion_izquierdo">
+                    <label class="input-custom form-check-label" for="checkSiAcromionIzquierdo">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoAcromionIzquierdo" value=False
+                        name="inspeccion_acromion_izquierdo">
+                    <label class="input-custom form-check-label" for="checkNoAcromionIzquierdo">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                3. Proyección de los cuerpos de las vértebras lumbares: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiVertebrasIzquierdo" value=True
+                        name="inspeccion_vertebras_izquierdo">
+                    <label class="input-custom form-check-label" for="checkSiVertebrasIzquierdo">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoVertebrasIzquierdo" value=False
+                        name="inspeccion_vertebras_izquierdo">
+                    <label class="input-custom form-check-label" for="checkNoVertebrasIzquierdo">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                4. Trocánter mayor: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiTrocanterIzquierdo" value=True
+                        name="inspeccion_trocante_izquierdo">
+                    <label class="input-custom form-check-label" for="checkSiTrocanterIzquierdo">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoTrocanterIzquierdo" value=False
+                        name="inspeccion_trocante_izquierdo">
+                    <label class="input-custom form-check-label" for="checkNoTrocanterIzquierdo">No</label>
+                </div>
+            </div>
+            <div class="col-md-2 text-center">
+                5. Ligeramente delante del maléolo externo: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkSiMaleoloIzquierdo" value=True
+                        name="inspeccion_maleolo_izquierdo">
+                    <label class="input-custom form-check-label" for="checkSiMaleoloIzquierdo">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkNoMaleoloIzquierdo" value=False
+                        name="inspeccion_maleolo_izquierdo">
+                    <label class="input-custom form-check-label" for="checkNoMaleoloIzquierdo">No</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

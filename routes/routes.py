@@ -3,7 +3,7 @@ import dotenv
 
 from passlib.hash import pbkdf2_sha256
 from functools import wraps
-from flask import request, render_template, redirect, url_for, session, jsonify
+from flask import request, render_template, redirect, url_for, session, jsonify, flash
 from routes.control import guardar_historia_clinica, obtener_historias, obtener_usuario, crear_usuario
 from app import app
 from db import db
@@ -57,6 +57,7 @@ def registrar_usuario():
     
     usuario = crear_usuario(nombres, apellidos, cedula, contrasenia)
     if db['usuario'].insert_one(usuario):
+        flash(nombres+" "+apellidos+" registrado correctamente. Ya puedes iniciar sesión!!", 'success')
         return jsonify({'success': 'Se ha creado correctamente el usuario :'+str(usuario)}), 200
 
     return jsonify({ 'error': 'Se produjo un error' }), 400
@@ -105,6 +106,7 @@ def historia_clinica():
 @requerir_logeo
 def agregar_historia_clinica(): 
     guardar_historia_clinica(request)
+    flash("Historia clínica de "+ request.form.get('nombres') +" "+ request.form.get('apellidos') +" se ha guardado correctamente", 'success')
     return redirect(url_for('index'))
 
 @app.route('/listar_historia')

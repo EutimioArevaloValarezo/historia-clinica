@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{{ toastr.include_toastr_js() }}
+
 <style>
     /* Position text in the middle of the page/image */
     .bg-text {
@@ -26,7 +28,6 @@
 <div class="bg-text">
     <h2>Registro de episodios de salud y enfermedad de una persona</h2>
     <h1 style="font-size:50px">SISTEMA DE HISTORIAS CLÍNICAS DIGITALES</h1>
-    <p>Desarrollado en Python y Flask</p>
 </div>
 
 {% endblock %}

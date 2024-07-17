@@ -118,6 +118,7 @@ def guardar_historia_clinica(request):
             },
             'farmaco':{
                 'nombre': request.form.get('nombre_farmaco'),
+                'tiene_farmaco': bool(request.form.get('tiene_farmaco')),
                 'anticoncepcion': request.form.get('farmaco_anticoceptivo'),
                 'otro_motivo': request.form.get('farmaco_otro_motivo'),
                 'frecuencia': request.form.get('farmaco_frecuencia'),
@@ -162,9 +163,191 @@ def guardar_historia_clinica(request):
                 'ninguna':True if request.form.get('fobia_ninguna') else False,
                 'otro': request.form.get('fobia_otra')
             }
-        }
+        },
+        'habitos':{
+            'nro_comida': { 
+                'conteo_comida': request.form.get('habito_nro_comidas'),
+                'otro_nro_comida': request.form.get('habito_otro_nro_comidas')
+            },
+            'tiempo_entre_comida': {
+                'princial_desayuno': True if request.form.get('comida_desayuno') else False,
+                'princial_almuerzo': True if request.form.get('comida_almuerzo') else False,
+                'princial_merienda': True if request.form.get('comida_merienda') else False,
+                'tiempo_entre_refrigerio': request.form.get('tiempo_refrigerio'),
+                'otro_tiempo_entre_refrigerio': request.form.get('otro_tiempo_refrigerio')
+            },
+            'consumo_agua':{
+                'nro_vasos': request.form.get('nro_vasos_agua') 
+            }
+        },
+        'habitos_toxicos':{
+            'alcohol':{
+                'consumo': bool(request.form.get('habito_toxico_alcohol')),
+                'frecuencia_horas': request.form.get('habito_alcohol_horas'),
+                'frecuencia_dias': request.form.get('habito_alcohol_dias'),
+                'frecuencia_semanas': request.form.get('habito_alcohol_semanas'),
+                'ultimo_consumo': request.form.get('habito_alcohol_ultimo_consumo')
+            },
+            'tabaco': {
+                'consumo': bool(request.form.get('habito_toxico_tabaco')),
+                'frecuencia_horas': request.form.get('habito_tabaco_horas'),
+                'frecuencia_dias': request.form.get('habito_tabaco_dias'),
+                'frecuencia_semanas': request.form.get('habito_tabaco_semanas'),
+                'nro_cajetillas': request.form.get('habito_tabaco_nro'),
+                'ultimo_consumo': request.form.get('habito_tabaco_ultimo_consumo'),
+            },
+            'drogas':{
+                'consumo': bool(request.form.get('habito_toxico_drogas')),
+                'tipo_consumo': request.form.get('habito_drogas_consumo'),
+                'frecuencia_horas': request.form.get('habito_drogas_horas'),
+                'frecuencia_dias': request.form.get('habito_drogas_dias'),
+                'frecuencia_semanas': request.form.get('habito_drogas_semanas'),
+                'ultimo_consumo': request.form.get('habito_drogas_ultimo_consumo'),
+            }
+        },
+        'actividad_personal':{
+            'fisica': {
+                'realizar': bool(request.form.get('habito_toxico_drogas')),
+                'tipo': request.form.get('actividad_tipo'),
+                'frecuencia_minutos': request.form.get('actividad_minutos'),
+                'frecuencia_horas': request.form.get('actividad_horas'),
+            },
+            'descanso': {
+                'horas': request.form.get('horas_descanso'),
+            }
+        },
+        'motivo_consulta': request.form.get('motivo_consulta'),
+        'enfermedad_actual': request.form.get('enfermedad_actual'),
+        'observacion': request.form.get('consulta_observacion'),
+        'inspeccion': {
+            'planto_antero_posterior': {
+                'entrecejo': bool(request.form.get('inspeccion_entrecejo')),
+                'punta_nariz': bool(request.form.get('inspeccion_punta_nariz')),
+                'angulo_mentoniano': bool(request.form.get('inspeccion_angulo_mentoniano')),
+                'manubrio_esteral': bool(request.form.get('inspeccion_manubrio_esteral')),
+                'apofisis_xifoides': bool(request.form.get('inspeccion_apofisis_xifoides')),
+                'ombligo': bool(request.form.get('inspeccion_ombligo')),
+                'sinfisis_publica': bool(request.form.get('inspeccion_sinfisis_pubica')),
+                'centro_sustentacion': bool(request.form.get('inspeccion_centro_sustentacion')),
+                'altura_ojos': bool(request.form.get('inspeccion_altura_ojos')),
+                'pabellones_auriculares': bool(request.form.get('inspeccion_pabellones_auriculares')),
+                'altura_acromion': bool(request.form.get('inspeccion_altura_acromion')),
+                'pliegues_inframamarios': bool(request.form.get('inspeccion_inframamarios')),
+                'espinas_iliacas': bool(request.form.get('inspeccion_iliacas_superiores')),
+                'base_patela': bool(request.form.get('inspeccion_base_patela')),
+                'maleolos_internos': bool(request.form.get('inspeccion_maleolos_internos')),
+            },
+            'plano_antero_anterior':{
+                'protuberancia_occipital': bool(request.form.get('inspeccion_protuberancia_occipital')),
+                'apofisis_espinosas': bool(request.form.get('inspeccion_apofisis_espinosas')),
+                'angulo_mentoniano': bool(request.form.get('inspeccion_angulo_mentoniano')),
+                'manubrio_esteral': bool(request.form.get('inspeccion_manubrio_esteral')),
+                'pabellones_auriculares': bool(request.form.get('pabellones_auriculares_2')),
+                'angulo_escapula': bool(request.form.get('inspeccion_angulo_escapula')),
+                'espina_iliacas': bool(request.form.get('inspeccion_espina_iliacas')),
+                'gluteo_inferior': bool(request.form.get('inspeccion_gluteo_inferior')),
+                'pliegue_popliteo': bool(request.form.get('inspeccion_pliegue_popliteo')),
+                'calcaneos': bool(request.form.get('inspeccion_calcaneos')),
+                'gluteo_inferior': bool(request.form.get('inspeccion_gluteo_inferior')),
+            },
+            'plano_sagital_derecho':{
+                'conducto_auditivo_derecho': bool(request.form.get('inspeccion_conducto_auditivo_derecho')),
+                'acromion_derecho': bool(request.form.get('inspeccion_acromion_derecho')),
+                'vertebras_derecho': bool(request.form.get('inspeccion_vertebras_derecho')),
+                'trocante_derecho': bool(request.form.get('inspeccion_trocante_derecho')),
+                'maleolo_derecho': bool(request.form.get('inspeccion_maleolo_derecho')),    
+            },
+            'planp_sagital_izquierdo':{
+                'conducto_auditivo_izquierdo': bool(request.form.get('inspeccion_conducto_auditivo_izquierdo')),
+                'acromion_izquierdo': bool(request.form.get('inspeccion_acromion_izquierdo')),
+                'vertebras_izquierdo': bool(request.form.get('inspeccion_vertebras_izquierdo')),
+                'trocante_izquierdo': bool(request.form.get('inspeccion_trocante_izquierdo')),
+                'maleolo_izquierdo': bool(request.form.get('inspeccion_maleolo_izquierdo')),   
+            }
+        },
+        'valoracion_camilla': request.form.get('valoracion_camilla'),
+        'palpacion': request.form.get('palpacion'),
+        'auscultacion': request.form.get('auscultacion'),
+        'percusion': request.form.get('percusion'),
+        'goniometria': {
+            'hombro':{
+                'flexion_derecha': request.form.get('hombro_flexion_derecha'),
+                'flexion_izquierda': request.form.get('hombro_flexion_izquierda'),
+                'extension_derecha': request.form.get('hombro_extension_derecha'),
+                'extension_izquierda': request.form.get('hombro_extension_izquierda'),
+                'abduccion_derecha': request.form.get('hombro_abduccion_derecha'),
+                'abduccion_izquierda': request.form.get('hombro_abduccion_izquierda'),
+                'aduccion_derecha': request.form.get('hombro_aduccion_derecha'),
+                'aduccion_izquierda': request.form.get('hombro_aduccion_izquierda'),
+                'rotacion_interna_derecha': request.form.get('hombro_rotacion_interna_derecha'),
+                'rotacion_interna_izquierda': request.form.get('hombro_rotacion_interna_izquierda'),
+                'rotacion_externa_derecha': request.form.get('hombro_rotacion_externa_derecha'),
+                'rotacion_externa_izquierda': request.form.get('hombro_rotacion_externa_izquierda'),
+            },
+            'codo':{
+                'flexion_derecha': request.form.get('codo_flexion_derecha'),
+                'flexion_izquierda': request.form.get('codo_flexion_izquierda'),
+                'extension_derecha': request.form.get('codo_extension_derecha'),
+                'extension_izquierda': request.form.get('codo_extension_izquierda'),
+                'pronacion_derecha': request.form.get('codo_pronacion_derecha'),
+                'pronacion_izquierda': request.form.get('codo_pronacion_izquierda'),
+                'supinacion_derecha': request.form.get('codo_supinacion_derecha'),
+                'supinacion_izquierda': request.form.get('codo_supinacion_izquierda')
+            },
+            'muneca':{
+                'flexion_derecha': request.form.get('muneca_flexion_derecha'),
+                'flexion_izquierda': request.form.get('muneca_flexion_izquierda'),
+                'extension_derecha': request.form.get('muneca_extension_derecha'),
+                'extension_izquierda': request.form.get('muneca_extension_izquierda'),
+                'radial_derecha': request.form.get('muneca_radial_derecha'),
+                'radial_izquierda': request.form.get('muneca_radial_izquierda'),
+                'cubital_derecha': request.form.get('muneca_cubital_derecha'),
+                'cubital_izquierda': request.form.get('muneca_cubital_izquierda')
+            },
+            'cadera':{
+                'flexion_derecha': request.form.get('cadera_flexion_derecha'),
+                'flexion_izquierda': request.form.get('cadera_flexion_izquierda'),
+                'extension_derecha': request.form.get('cadera_extension_derecha'),
+                'extension_izquierda': request.form.get('cadera_extension_izquierda'),
+                'abduccion_derecha': request.form.get('cadera_abduccion_derecha'),
+                'abduccion_izquierda': request.form.get('cadera_abduccion_izquierda'),
+                'aduccion_derecha': request.form.get('cadera_aduccion_derecha'),
+                'aduccion_izquierda': request.form.get('cadera_aduccion_izquierda'),
+                'rotacion_interna_derecha': request.form.get('cadera_rotacion_interna_derecha'),
+                'rotacion_interna_izquierda': request.form.get('cadera_rotacion_interna_izquierda'),
+                'rotacion_externa_derecha': request.form.get('cadera_rotacion_externa_derecha'),
+                'rotacion_externa_izquierda': request.form.get('cadera_rotacion_externa_izquierda'),
+            },
+            'muneca':{
+                'flexion_derecha': request.form.get('rodilla_flexion_derecha'),
+                'flexion_izquierda': request.form.get('rodilla_flexion_izquierda'),
+                'extension_derecha': request.form.get('rodilla_extension_derecha'),
+                'extension_izquierda': request.form.get('rodilla_extension_izquierda'),
+                'rotacion_interna_derecha': request.form.get('rodilla_rotacion_interna_derecha'),
+                'rotacion_interna_izquierda': request.form.get('rodilla_rotacion_interna_izquierda'),
+                'rotacion_externa_derecha': request.form.get('rodilla_rotacion_externa_derecha'),
+                'rotacion_externa_izquierda': request.form.get('rodilla_rotacion_externa_izquierda')
+            },
+            'tobillo':{
+                'flexion_derecha': request.form.get('tobillo_flexion_derecha'),
+                'flexion_izquierda': request.form.get('tobilla_flexion_izquierda'),
+                'dorsiflexion_derecha': request.form.get('tobillo_dorsiflexion_derecha'),
+                'dorsiflexion_izquierda': request.form.get('tobillo_dorsiflexion_izquierda'),
+                'inversion_derecha': request.form.get('tobillo_inversion_derecha'),
+                'inversion_izquierda': request.form.get('tobillo_inversion_izquierda'),
+                'eversion_derecha': request.form.get('tobillo_eversion_derecha'),
+                'eversion_izquierda': request.form.get('tobillo_eversion_izquierda')
+            }
+        },
+        'diagnostico_kinestico': request.form.get('diagnostico_kinestico'),
+        'objetivo_corto_plazo': request.form.get('objetivo_corto_plazo'),
+        'objetivo_mediano_plazo': request.form.get('objetivo_mediano_plazo'),
+        'objetivo_largo_plazo': request.form.get('objetivo_largo_plazo'),
+        'tratamiento': request.form.get('tratamiento'),
+        
     }  
     db['historia'].insert_one(historia)
+    
 
 def obtener_historias():
     historias = list(db['historia'].find())

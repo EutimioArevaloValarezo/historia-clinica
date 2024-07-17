@@ -109,7 +109,7 @@
             <div class="col-md-2 text-center">
                 <div class="form-check form-check-inline">
                     <input class="input-custom form-check-input" type="radio" id="radioSiQuirurgico" value=True
-                        name="ed=dermatitis-atopica" name="tiene_cirugia">
+                        name="tiene_cirugia">
                     <label class="input-custom form-check-label" for="radioSiQuirurgico">Sí</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -134,31 +134,47 @@
             <div class="col-md-2">
                 <h3 class="input-custom text-center">Utilización de Fármacos</h3>
             </div>
-            <div class="form-floating col-md-3">
-                <input type="text" class="input-custom form-control" id="textNombreFarmaco"
-                    placeholder="Nombre del Fármaco" name="nombre_farmaco">
-                <label for="textNombreFarmaco">Nombre del Fármaco</label>
+            <div class="col-md-2 text-center">
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="radioSiFarmaco" value=True
+                        name="tiene_farmaco">
+                    <label class="input-custom form-check-label" for="radioSiFarmaco">Sí</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="radioNoFarmaco" value=False
+                        name="tiene_farmaco">
+                    <label class="input-custom form-check-label" for="radioSiFarmaco">No</label>
+                </div>
             </div>
-            <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textFarmacoAnticonceptivo"
-                    placeholder="Farmácos por anticoncepción" name="farmaco_anticoceptivo">
-                <label for="textFarmacoAnticonceptivo">Farmácos por anticoncepción</label>
-            </div>
-            <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textOtroMotivo"
-                    placeholder="Farmácos por otro motivo" name="farmaco_otro_motivo">
-                <label for="textOtroMotivo">Farmácos por otro motivo</label>
-            </div>
-            <div class="form-floating col-md-2">
+            <div class="form-floating col-md-4">
                 <input type="text" class="input-custom form-control" id="textFarmacoFrecuencia" placeholder="Frecuencia"
                     name="farmaco_frecuencia">
                 <label for="textFarmacoFrecuencia">Frecuencia</label>
             </div>
-            <div class="form-floating col-md-1">
+            <div class="form-floating col-md-4">
                 <input type="text" class="input-custom form-control" id="textFarmacoDosificacion"
                     placeholder="Dosificación" name="farmaco_dosificacion">
                 <label for="textFarmacoDosificacion">Dosificación</label>
             </div>
+            <div class="col-md-2">
+                <h3 class="input-custom text-center" hidden>Utilización de Fármacos</h3>
+            </div>
+            <div class="form-floating col-md-4">
+                <input type="text" class="input-custom form-control" id="textNombreFarmaco"
+                    placeholder="Nombre del Fármaco" name="nombre_farmaco">
+                <label for="textNombreFarmaco">Nombre del Fármaco</label>
+            </div>
+            <div class="form-floating col-md-3">
+                <input type="text" class="input-custom form-control" id="textFarmacoAnticonceptivo"
+                    placeholder="Farmácos por anticoncepción" name="farmaco_anticoceptivo">
+                <label for="textFarmacoAnticonceptivo">Farmácos por anticoncepción</label>
+            </div>
+            <div class="form-floating col-md-3">
+                <input type="text" class="input-custom form-control" id="textOtroMotivo"
+                    placeholder="Farmácos por otro motivo" name="farmaco_otro_motivo">
+                <label for="textOtroMotivo">Farmácos por otro motivo</label>
+            </div>
+            
         </div>
 
 
@@ -325,7 +341,8 @@
                     <label class="input-custom form-check-label" for="checkClaustrofobia">Claustrofobia</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkHidrofobia" name="fobia_hidrofobia">
+                    <input class="input-custom form-check-input" type="checkbox" id="checkHidrofobia"
+                        name="fobia_hidrofobia">
                     <label class="input-custom form-check-label" for="checkHidrofobia">Hidrofobia</label>
                 </div>
                 <div class="form-check form-check-inline">

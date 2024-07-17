@@ -10,59 +10,65 @@
             <div class="col-md-2 text-center">
                 Realiza alguna actividad: <br>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDDermatitisAtopica"
-                        value="Asma" name="ed=dermatitis-atopica">
-                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Sí</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkSiActividadFisica" value=True
+                        name="realizar_actividad_fisica">
+                    <label class="input-custom form-check-label" for="checkSiActividadFisica">Sí</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">No</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkNoActividadFisica" value=False
+                        name="realizar_actividad_fisica">
+                    <label class="input-custom form-check-label" for="checkNoActividadFisica">No</label>
                 </div>
             </div>
             <div class="form-floating col-md-8">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Frecuencia en días"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Tipo de actividad o deporte</label>
+                <input type="text" class="input-custom form-control" id="textTipoActividad"
+                    placeholder="Tipo de actividad o deporte" name="actividad_tipo">
+                <label for="textTipoActividad">Tipo de actividad o deporte</label>
             </div>
             <div class="col-md-2">
                 <h3 class="input-custom text-center" hidden>Actividad Física</h3>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Frecuencia en días"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Minutos</label>
+                <input type="text" class="input-custom form-control" id="textActividadFrecuenciaMinutos"
+                    placeholder="Minutos" name="actividad_minutos">
+                <label for="textActividadFrecuenciaMinutos">Minutos</label>
             </div>
             <div class="form-floating col-md-2">
-                <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Frecuencia en días"
-                    name="ed-otra">
-                <label for="textareaEDOtra">Horas</label>
+                <input type="text" class="input-custom form-control" id="textActividadFrecuenciaHoras"
+                    placeholder="Horas" name="actividad_horas">
+                <label for="textActividadFrecuenciaHoras">Horas</label>
             </div>
             <div class="col-md-6 text-center">
                 Frecuencia: <br>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDDermatitisAtopica"
-                        value="Asma" name="ed=dermatitis-atopica">
-                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">1-2</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkActividad12" value="12"
+                        name="frecuencia_actividad">
+                    <label class="input-custom form-check-label" for="checkActividad12">1-2</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">2-3</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkActividad23" value="23"
+                        name="frecuencia_actividad">
+                    <label class="input-custom form-check-label" for="checkActividad23">2-3</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">3-4</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkActividad34" value="34"
+                        name="frecuencia_actividad">
+                    <label class="input-custom form-check-label" for="checkActividad34">3-4</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">4-5</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkActividad45" value="45"
+                        name="frecuencia_actividad">
+                    <label class="input-custom form-check-label" for="checkActividad45">4-5</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">6-7</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkActividad67" value="67"
+                        name="frecuencia_actividad">
+                    <label class="input-custom form-check-label" for="checkActividad67">6-7</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">7 veces a la semana</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkActividad7" value="7"
+                        name="frecuencia_actividad">
+                    <label class="input-custom form-check-label" for="checkActividad7">7 veces a la semana</label>
                 </div>
             </div>
         </div>
@@ -74,33 +80,39 @@
             <div class="col-md-10 text-center">
                 Horas de sueño: <br>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDDermatitisAtopica"
-                        value="Asma" name="ed=dermatitis-atopica">
-                    <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">1-2</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkSuenio12" value="12"
+                        name="horas_descanso">
+                    <label class="input-custom form-check-label" for="checkSuenio12">1-2</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">2-3</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkSuenio23" value="23"
+                        name="horas_descanso">
+                    <label class="input-custom form-check-label" for="checkSuenio23">2-3</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">3-4</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkSuenio34" value="34"
+                        name="horas_descanso">
+                    <label class="input-custom form-check-label" for="checkSuenio34">3-4</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">4-5</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkSuenio45" value="45"
+                        name="horas_descanso">
+                    <label class="input-custom form-check-label" for="checkSuenio45">4-5</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">6-7</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkSuenio67" value="67"
+                        name="horas_descanso">
+                    <label class="input-custom form-check-label" for="checkSuenio67">6-7</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">7-8</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkSuenio78" value="78"
+                        name="horas_descanso">
+                    <label class="input-custom form-check-label" for="checkSuenio78">7-8</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkEDAcne" name="ed-acne">
-                    <label class="input-custom form-check-label" for="checkEDAcne">7-9 o más</label>
+                    <input class="input-custom form-check-input" type="radio" id="checkSuenio79" value="89"
+                        name="horas_descanso">
+                    <label class="input-custom form-check-label" for="checkSuenio79">8-9 o más</label>
                 </div>
             </div>
         </div>
