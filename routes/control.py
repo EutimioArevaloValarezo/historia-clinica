@@ -210,8 +210,9 @@ def guardar_historia_clinica(request):
             'fisica': {
                 'realizar': bool(request.form.get('habito_toxico_drogas')),
                 'tipo': request.form.get('actividad_tipo'),
-                'frecuencia_minutos': request.form.get('actividad_minutos'),
-                'frecuencia_horas': request.form.get('actividad_horas'),
+                'tiempo_minutos': request.form.get('actividad_minutos'),
+                'tiempo_horas': request.form.get('actividad_horas'),
+                'frecuencia': request.form.get('actividad_horas'),
             },
             'descanso': {
                 'horas': request.form.get('horas_descanso'),
@@ -221,14 +222,14 @@ def guardar_historia_clinica(request):
         'enfermedad_actual': request.form.get('enfermedad_actual'),
         'observacion': request.form.get('consulta_observacion'),
         'inspeccion': {
-            'planto_antero_posterior': {
+            'panto_antero_anterior': {
                 'entrecejo': bool(request.form.get('inspeccion_entrecejo')),
                 'punta_nariz': bool(request.form.get('inspeccion_punta_nariz')),
                 'angulo_mentoniano': bool(request.form.get('inspeccion_angulo_mentoniano')),
                 'manubrio_esteral': bool(request.form.get('inspeccion_manubrio_esteral')),
                 'apofisis_xifoides': bool(request.form.get('inspeccion_apofisis_xifoides')),
                 'ombligo': bool(request.form.get('inspeccion_ombligo')),
-                'sinfisis_publica': bool(request.form.get('inspeccion_sinfisis_pubica')),
+                'sinfisis_pubica': bool(request.form.get('inspeccion_sinfisis_pubica')),
                 'centro_sustentacion': bool(request.form.get('inspeccion_centro_sustentacion')),
                 'altura_ojos': bool(request.form.get('inspeccion_altura_ojos')),
                 'pabellones_auriculares': bool(request.form.get('inspeccion_pabellones_auriculares')),
@@ -238,18 +239,17 @@ def guardar_historia_clinica(request):
                 'base_patela': bool(request.form.get('inspeccion_base_patela')),
                 'maleolos_internos': bool(request.form.get('inspeccion_maleolos_internos')),
             },
-            'plano_antero_anterior':{
+            'plano_antero_posterior':{
                 'protuberancia_occipital': bool(request.form.get('inspeccion_protuberancia_occipital')),
                 'apofisis_espinosas': bool(request.form.get('inspeccion_apofisis_espinosas')),
-                'angulo_mentoniano': bool(request.form.get('inspeccion_angulo_mentoniano')),
-                'manubrio_esteral': bool(request.form.get('inspeccion_manubrio_esteral')),
-                'pabellones_auriculares': bool(request.form.get('pabellones_auriculares_2')),
+                'linea_interglutea': bool(request.form.get('inspeccion_linea_interglutea')),
+                'centro_sustentacion': bool(request.form.get('inspeccion_centro_sustentacion_2')),
+                'pabellones_auriculares': bool(request.form.get('inspeccion_pabellones_auriculares_2')),
                 'angulo_escapula': bool(request.form.get('inspeccion_angulo_escapula')),
                 'espina_iliacas': bool(request.form.get('inspeccion_espina_iliacas')),
                 'gluteo_inferior': bool(request.form.get('inspeccion_gluteo_inferior')),
                 'pliegue_popliteo': bool(request.form.get('inspeccion_pliegue_popliteo')),
-                'calcaneos': bool(request.form.get('inspeccion_calcaneos')),
-                'gluteo_inferior': bool(request.form.get('inspeccion_gluteo_inferior')),
+                'calcaneos': bool(request.form.get('inspeccion_calcaneos'))
             },
             'plano_sagital_derecho':{
                 'conducto_auditivo_derecho': bool(request.form.get('inspeccion_conducto_auditivo_derecho')),
@@ -270,6 +270,13 @@ def guardar_historia_clinica(request):
         'palpacion': request.form.get('palpacion'),
         'auscultacion': request.form.get('auscultacion'),
         'percusion': request.form.get('percusion'),
+        'escalas':{
+            'eva': request.form.get('escala_dolor_eva'),
+            'daniels': {
+                'calificacion': request.form.get('daniels_seleccionar'), 
+                'especificar': request.form.get('daniels_especificar')
+            },
+        },
         'goniometria': {
             'hombro':{
                 'flexion_derecha': request.form.get('hombro_flexion_derecha'),

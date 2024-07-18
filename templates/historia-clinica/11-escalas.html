@@ -1,0 +1,98 @@
+
+<div class="d-flex justify-content-center card mt-5 w-75 mx-auto">
+    <div class="card-header text-center">
+        <h3>Escala Visual Analógica de Dolor (EVA)</h3>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-12 text-center">
+                <label for="rangeDolorEVA" class="form-label">
+                    <p class="valor_emoji" style="font-size: 30px;">5</p>
+                    <p class="emoji" style="font-size: 120px;">😐</p>
+                </label>
+                <br>
+                <input name="escala_dolor_eva" type="range" class="form-range w-75" min="0" max="10" step="1"
+                    id="rangeDolorEVA" required>
+                <div class="w-75 mx-auto p-2 d-flex justify-content-between text-center">
+                    <span>0</span>
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center card mt-5 w-75 mx-auto">
+    <div class="card-header text-center">
+        <h3>Escala de Daniels</h3>
+    </div>
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-12 text-center">
+                <img src="{{ url_for('static', filename='images/escala-daniels.jpg') }}"
+                    class="img-fluid rounded-start w-50" alt="escala-daniels">
+            </div>
+        </div>
+
+        <div class="border row g-3 mt-2 pb-3 align-items-center">
+            <div class="col-md-5 text-center">
+                Seleccionar: <br>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkDaniels0" value="X"
+                        name="daniels_seleccionar">
+                    <label class="input-custom form-check-label" for="checkDaniels0">0</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkDaniels1" value="X"
+                        name="daniels_seleccionar">
+                    <label class="input-custom form-check-label" for="checkDaniels1">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkDaniels2" value="X"
+                        name="daniels_seleccionar">
+                    <label class="input-custom form-check-label" for="checkDaniels2">2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkDaniels3" value="X"
+                        name="daniels_seleccionar">
+                    <label class="input-custom form-check-label" for="checkDaniels3">3</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkDaniels4" value="X"
+                        name="daniels_seleccionar">
+                    <label class="input-custom form-check-label" for="checkDaniels4">4</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="input-custom form-check-input" type="radio" id="checkDaniels5" value="X"
+                        name="daniels_seleccionar">
+                    <label class="input-custom form-check-label" for="checkDaniels5">5</label>
+                </div>
+            </div>
+            <div class="form-floating col-md-7">
+                <input type="text" class="input-custom form-control" id="textDanielsEspecificar"
+                    placeholder="Especificar" name="daniels_especificar">
+                <label for="textDanielsEspecificar">Especificar</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var emojis = ['😀', '🙂', '😐', '🙁', '☹️', '😭'];
+
+    $("#rangeDolorEVA").on("input", function () {
+        var i = Math.floor($(this).val() / 2);
+        var j = $(this).val();
+        $(".emoji").html(emojis[i]);
+        $(".valor_emoji").html(j);
+    });
+</script>

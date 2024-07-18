@@ -117,19 +117,43 @@ def listar_historia():
     historias = obtener_historias()
     return render_template('listado.html', historias=historias)
 
+@app.route('/get_historia', methods=['POST'])
+@requerir_logeo
+def get_historia():
+    id_historia = request.form.get('id_historia')
+    historia = obtener_historia(id_historia)
+    if historia:
+        return jsonify({'paciente': historia['registro_paciente']['nombres'] +" "+historia['registro_paciente']['apellidos'],
+                        'expediente': historia['historia_clinica']['nro_expediente']})
+    else:
+        return jsonify({ 'error': 'Error grave' })
+    
+    
+@app.route('/eliminiar_historia', methods=['POST'])
+@requerir_logeo
+def eliminiar_historia():
+    id_historia = request.form.get('name_eliminar_historia')
+    historia = obtener_historia(id_historia)
+    db['historia'].delete_one(historia)
+    flash("Expediente Nro. "+ historia['historia_clinica']['nro_expediente'] + " de: " +historia['registro_paciente']['nombres']+ " " + historia['registro_paciente']['apellidos'] + " eliminado correctamente!", 'success')
+    return redirect(url_for('listar_historia'))
+
+
 @app.route('/exportar_historia_clinica')
 @requerir_logeo
-def exportar_historia_clinica(): 
-    # historia_clinica = request.form.get("id_historia_clinica")
-    historia_clinica = obtener_historia("5c059f7e82c4465a976dd682534ee78d")
+def exportar_historia_clinica():
+    id_historia = request.args.get('id_historia')
+    historia_clinica = obtener_historia(id_historia)
     historia_clinica["registro_paciente"]["fecha_nacimiento"] = datetime.strptime(historia_clinica["registro_paciente"]["fecha_nacimiento"], "%Y-%m-%d")
+    pdf_name = "Expediente" + historia_clinica['historia_clinica']['nro_expediente'] + "_" + historia_clinica['registro_paciente']['nombres'] + "_" + historia_clinica['registro_paciente']['apellidos']
     html = render_template('exportar_historia.html', historia=historia_clinica)
-    return render_pdf(HTML(string=html))
+    flash("Historia clínica exportada correctamente!", 'success')
+    return render_pdf(HTML(string=html), download_filename=pdf_name)
 
-@app.route('/ver_historia_clinica')
-def ver_historia_clinica(): 
-    # historia_clinica = request.form.get("id_historia_clinica")
-    historia_clinica = obtener_historia("5c059f7e82c4465a976dd682534ee78d")
-    historia_clinica["registro_paciente"]["fecha_nacimiento"] = datetime.strptime(historia_clinica["registro_paciente"]["fecha_nacimiento"], "%Y-%m-%d")
-    return render_template('exportar_historia.html', historia=historia_clinica)
+# @app.route('/ver_historia_clinica')
+# def ver_historia_clinica(): 
+#     # historia_clinica = request.form.get("id_historia_clinica")
+#     historia_clinica = obtener_historia("5c059f7e82c4465a976dd682534ee78d")
+#     historia_clinica["registro_paciente"]["fecha_nacimiento"] = datetime.strptime(historia_clinica["registro_paciente"]["fecha_nacimiento"], "%Y-%m-%d")
+#     return render_template('exportar_historia.html', historia=historia_clinica)
 

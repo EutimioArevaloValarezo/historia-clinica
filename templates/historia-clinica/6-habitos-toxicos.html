@@ -52,7 +52,7 @@
                     <label class="input-custom form-check-label" for="checkSiTabaco">Sí</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkNoTabaco"
+                    <input class="input-custom form-check-input" type="radio" id="checkNoTabaco" value=False
                         name="habito_toxico_tabaco">
                     <label class="input-custom form-check-label" for="checkNoTabaco">No</label>
                 </div>
@@ -95,32 +95,36 @@
             <div class="col-md-2 text-center">
                 <div class="form-check form-check-inline">
                     <input class="input-custom form-check-input" type="radio" id="checkSiDrogas"
-                        name="habito_toxico_drogas">
+                        name="habito_toxico_drogas" value=True>
                     <label class="input-custom form-check-label" for="checkSiDrogas">Sí</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="input-custom form-check-input" type="radio" id="checkNoDrogas"
-                        name="habito_toxico_drogas">
+                        name="habito_toxico_drogas" value=False>
                     <label class="input-custom form-check-label" for="checkNoDrogas">No</label>
                 </div>
 
             </div>
-
+            
             <div class="col-md-8 text-center">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkDrogasExperimental" value="Experimental" name="habito_drogas_consumo">
+                    <input class="input-custom form-check-input" type="radio" id="checkDrogasExperimental"
+                        value="Experimental" name="habito_drogas_consumo">
                     <label class="input-custom form-check-label" for="checkDrogasExperimental">Experimental</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkDrogasOcasional" value="Ocasional" name="habito_drogas_consumo">
+                    <input class="input-custom form-check-input" type="radio" id="checkDrogasOcasional"
+                        value="Ocasional" name="habito_drogas_consumo">
                     <label class="input-custom form-check-label" for="checkDrogasOcasional">Ocasional</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkDrogasHabitual" value="Habitual" name="habito_drogas_consumo">
+                    <input class="input-custom form-check-input" type="radio" id="checkDrogasHabitual" value="Habitual"
+                        name="habito_drogas_consumo">
                     <label class="input-custom form-check-label" for="checkDrogasHabitual">Habitual</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkDrogasDependiente" value="Dependiente" name="habito_drogas_consumo">
+                    <input class="input-custom form-check-input" type="radio" id="checkDrogasDependiente"
+                        value="Dependiente" name="habito_drogas_consumo">
                     <label class="input-custom form-check-label" for="checkDrogasDependiente">Dependiente</label>
                 </div>
             </div>
