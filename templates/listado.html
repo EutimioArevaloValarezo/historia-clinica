@@ -26,7 +26,8 @@
                         {% for historia in historias %}
                         <tr>
                             <td>
-                                {{ historia['registro_paciente']['nombres'] +" "+ historia['registro_paciente']['apellidos']  }}
+                                {{ historia['registro_paciente']['nombres'] +" "+
+                                historia['registro_paciente']['apellidos'] }}
                             </td>
                             <td>
                                 {{ historia['registro_paciente']['sexo'] }}
@@ -64,7 +65,7 @@
                                             window.location.href = `/exportar_historia_clinica?id_historia=${id}`;
                                         });
                                     });
-                                    </script>
+                                </script>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -102,6 +103,2353 @@
         </div>
     </div>
 </div>
+
+<div class="modal modal-xl fade" id="historiaEditar" tabindex="-1" aria-labelledby="editarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-3" id="eliminarLabel">Editar Historia Clínica</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/editar_historia" method="post">
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto">
+                        <div class="card-header text-center">
+                            <h3>Historia Clínica</h3>
+                            <input type="hidden" id="id_historia_clinica_editar" name="name_editar_historia">
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label for="inputNumExpediente" class="form-label">Núm. de Expediente <span class="text-primary">*</span></label>
+                                    <input required type="text" class="input-custom form-control" id="inputNumExpediente"
+                                        name="num_expediente">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputCama" class="form-label">Cama/Cubículo <span class="text-primary">*</span></label>
+                                    <input required type="text" class="input-custom form-control" id="inputCama" name="cama_cubiculo">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputFecha" class="form-label">Fecha <span class="text-primary">*</span></label>
+                                    <input required type="date" class="input-custom form-control" id="inputFecha" name="fecha">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputHora" class="form-label">Hora <span class="text-primary">*</span></label>
+                                    <input required type="time" class="input-custom form-control" id="inputHora" name="hora">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Registro del Paciente</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="inputNombre" class="form-label">Nombres:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputNombre" name="nombres">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputApellido" class="form-label">Apellidos:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputApellido" name="apellidos">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                                    <input required type="date" class="input-custom form-control" id="inputNacimiento"
+                                        name="fecha_nacimiento">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputEdad" class="form-label">Edad:</label>
+                                    <input type="text" class="input-custom form-control" id="inputEdad" name="edad">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputSexo" class="form-label">Sexo:</label>
+                                    <select required id="inputSexo" class="input-custom form-select" name="sexo">
+                                        <option selected disabled>Seleccionar...</option>
+                                        <option>Masculino</option>
+                                        <option>Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="inputEstadoCivil" class="form-label">Estado Civil:</label>
+                                    <select required id="inputEstadoCivil" class="input-custom form-select" name="estado_civil">
+                                        <option selected disabled>Seleccionar...</option>
+                                        <option>Soltero/a</option>
+                                        <option>Casado/a</option>
+                                        <option>Divorciado/a</option>
+                                        <option>Viudo/a</option>
+                                        <option>Unión de Hecho</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputCedula" class="form-label">Cédula:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputCedula" name="cedula">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputCelular" class="form-label">Celular:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputCelular" name="celular">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputCorreo" class="form-label">Correo Electrónico:</label>
+                                    <input required type="email" class="input-custom form-control" id="inputCorreo" name="correo">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputLugarNacimiento" class="form-label">Lugar de nacimiento:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputLugarNacimiento"
+                                        name="lugar_nacimiento">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputLugarRecidencia" class="form-label">Lugar de residencia:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputLugarRecidencia"
+                                        name="lugar_recidencia">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputDireccionDomicilio" class="form-label">Dirección del Domicilio:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputDireccionDomicilio"
+                                        name="direccion_domicilio">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputNivelInstruccion" class="form-label">Nivel de Instrucción:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputNivelInstruccion"
+                                        name="nivel_instruccion">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputOcupacion" class="form-label">Ocupación:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputOcupacion" name="ocupacion">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputProfesion" class="form-label">Profesión:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputProfesion" name="profesion">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputSeguroSocial" class="form-label">Seguro Social:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputSeguroSocial"
+                                        name="seguro_social">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputRaza" class="form-label">Raza:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputRaza" name="raza">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputReligion" class="form-label">Religión:</label>
+                                    <input required type="text" class="input-custom form-control" id="inputReligion" name="religion">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Antecedentes Heredofamiliares</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-2 p-2 text-center">
+                                    <h3 class="input-custom">Enfermedades congénitas</h3>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputSiCongenitas"
+                                        name="enfermedad_congenita" value=True>
+                                    <label for="inputSiCongenitas" class="input-custom form-check-label">Sí</label>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputNoCongenitas"
+                                        name="enfermedad_congenita" value=False>
+                                    <label for="inputNoCongenitas" class="input-custom form-check-label">No</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="floatingCongenitasParentesco"
+                                        placeholder="Parentesco" name="congenita_parentesco">
+                                    <label for="floatingCongenitasParentesco">Parentesco</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <textarea class="input-custom form-control" id="floatingCongenitasEspecifique"
+                                        placeholder="Especifique" name="congenita_especificar"></textarea>
+                                    <label for="floatingCongenitasEspecifique">Especifique</label>
+                                </div>
+                    
+                    
+                    
+                                <div class="col-md-2 p-2">
+                                    <h3 class="input-custom text-center">Enfermedades Infecciosas</h3>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputSiInfecciosa"
+                                        name="enfermedad_infecciosa" value=True>
+                                    <label for="inputSiInfecciosa" class="input-custom form-check-label">Sí</label>
+                    
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputNoInfecciosa"
+                                        name="enfermedad_infecciosa" value="False">
+                                    <label for="inputNoInfecciosa" class="input-custom form-check-label">No</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="floatingInfecciosaParentesco"
+                                        placeholder="Parentesco" name="infecciosa_parentesco">
+                                    <label for="floatingInfecciosaParentesco">Parentesco</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <textarea class="input-custom form-control" id="floatingInfecciosaEspecifique"
+                                        placeholder="Especifique" name="infecciosa_especificar"></textarea>
+                                    <label for="floatingInfecciosaEspecifique">Especifique</label>
+                                </div>
+                    
+                    
+                                <div class="col-md-2 p-2">
+                                    <h3 class="input-custom text-center">Enfermedades Metabólicas</h3>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputSiMetabolica"
+                                        name="enfermedad_metabolica" value=True>
+                                    <label for="inputSiMetabolica" class="input-custom form-check-label">Sí</label>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputNoMetabolica"
+                                        name="enfermedad_metabolica" value=False>
+                                    <label for="inputNoMetabolica" class="input-custom form-check-label">No</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="floatingMetabolicaParentesco"
+                                        placeholder="Parentesco" name="metabolica_parentesco">
+                                    <label for="floatingMetabolicaParentesco">Parentesco</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <textarea class="input-custom form-control" id="floatingMetabolicaEspecifique"
+                                        placeholder="Especifique" name="metabolica_especificar"></textarea>
+                                    <label for="floatingMetabolicaEspecifique">Especifique</label>
+                                </div>
+                    
+                    
+                                <div class="col-md-2 p-2">
+                                    <h3 class="input-custom text-center">Enfermedades Musculoesquelético</h3>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputSiMusculoesqueletico"
+                                        name="enfermedad_musculoesqueletico" value=True>
+                                    <label for="inputSiMusculoesqueletico" class="input-custom form-check-label">Sí</label>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputNoMusculoesqueletico"
+                                        name="enfermedad_musculoesqueletico" value=False>
+                                    <label for="inputNoMusculoesqueletico" class="input-custom form-check-label">No</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="floatingMusculoesqueleticoParentesco"
+                                        placeholder="Parentesco" name="musculoesqueletico_parentesco">
+                                    <label for="floatingMusculoesqueleticoParentesco">Parentesco</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <textarea class="input-custom form-control" id="floatingMusculoesqueleticoEspecifique"
+                                        placeholder="Especifique" name="musculoesqueletico_especificar"></textarea>
+                                    <label for="floatingMusculoesqueleticoEspecifique">Especifique</label>
+                                </div>
+                    
+                    
+                                <div class="col-md-2 p-2">
+                                    <h3 class="input-custom text-center">Enfermedades Cardiovasculares</h3>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputSiCardiovascular"
+                                        name="enfermedad_cardiovascular" value=True>
+                                    <label for="inputSiCardiovascular" class="input-custom form-check-label">Sí</label>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputNoCardiovascular"
+                                        name="enfermedad_cardiovascular" value=False>
+                                    <label for="inputNoCardiovascular" class="input-custom form-check-label">No</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="floatingCardiovascularParentesco"
+                                        placeholder="Parentesco" name="cardiovascular_parentesco">
+                                    <label for="floatingCardiovascularParentesco">Parentesco</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <textarea class="input-custom form-control" id="floatingCardiovascularEspecifique"
+                                        placeholder="Especifique" name="cardiovascular_especificar"></textarea>
+                                    <label for="floatingCardiovascularEspecifique">Especifique</label>
+                                </div>
+                    
+                                <div class="col-md-2 p-2">
+                                    <h3 class="input-custom text-center">Enfermedades Respiratorias</h3>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputSiRespiratoria"
+                                        name="enfermedad_respiratoria">
+                                    <label for="inputSiRespiratoria" class="input-custom form-check-label">Sí</label>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputNoRespiratoria"
+                                        name="enfermedad_respiratoria">
+                                    <label for="inputNoRespiratoria" class="input-custom form-check-label">No</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="floatingRespiratoriasParentesco"
+                                        placeholder="Parentesco" name="respiratoria_parentesco">
+                                    <label for="floatingRespiratoriasParentesco">Parentesco</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <textarea class="input-custom form-control" id="floatingRespiratoriasEspecifique"
+                                        placeholder="Especifique" name="respiratoria_especificar"></textarea>
+                                    <label for="floatingRespiratoriasEspecifique">Especifique</label>
+                                </div>
+                    
+                    
+                                <div class="col-md-2 p-2">
+                                    <h3 class="input-custom text-center">Enfermedades Oncológicas</h3>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputSiOncologica"
+                                        name="enfermedad_oncologica">
+                                    <label for="inputSiOncologica" class="input-custom form-check-label">Sí</label>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputNoOncologica"
+                                        name="enfermedad_oncologica">
+                                    <label for="inputNoOncologica" class="input-custom form-check-label">No</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="floatingOncologicasParentesco"
+                                        placeholder="Parentesco" name="oncologica_parentesco">
+                                    <label for="floatingOncologicasParentesco">Parentesco</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <textarea class="input-custom form-control" id="floatingOncologicasEspecifique"
+                                        placeholder="Especifique" name="oncologica_especificar"></textarea>
+                                    <label for="floatingOncologicasEspecifique">Especifique</label>
+                                </div>
+                    
+                    
+                                <div class="col-md-2 p-2">
+                                    <h3 class="input-custom text-center">Otras</h3>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputSiOtra"
+                                        name="enfermedad_otra">
+                                    <label for="inputSiOtra" class="input-custom form-check-label">Sí</label>
+                                </div>
+                                <div class="col-md-1 p-3 text-center">
+                                    <input required type="radio" class="input-custom form-check-input" id="inputNoOtra"
+                                        name="enfermedad_otra">
+                                    <label for="inputNoOtra" class="input-custom form-check-label">No</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="floatingOtrasParentesco"
+                                        placeholder="Parentesco" name="otra_parentesco">
+                                    <label for="floatingOtrasParentesco">Parentesco</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <textarea class="input-custom form-control" id="floatingOtrasEspecifique"
+                                        placeholder="Especifique" name="otra_especificar"></textarea>
+                                    <label for="floatingOtrasEspecifique">Especifique</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Antecedentes Personales</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Alergias</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlergiaAsma"
+                                            name="alergia_asma">
+                                        <label class="input-custom form-check-label" for="checkAlergiaAsma">Asma</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlergiaRinitis"
+                                            value="Rinitis" name="alergia_rinitis">
+                                        <label class="input-custom form-check-label" for="checkAlergiaRinitis">Rinitis</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlergiaConjuntivitis"
+                                            value="Conjuntivitis" name="alergia_conjuntivitis">
+                                        <label class="input-custom form-check-label" for="checkAlergiaConjuntivitis">Conjuntivitis</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlergiaAlimentos"
+                                            name="alergia_alimentos">
+                                        <label class="input-custom form-check-label" for="checkAlergiaAlimentos">Alimentos</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlergiaMedicamentos"
+                                            name="alergia_medicamentos">
+                                        <label class="input-custom form-check-label" for="checkAlergiaMedicamentos">Medicamentos</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlergiaLatex"
+                                            name="alergia_latex">
+                                        <label class="input-custom form-check-label" for="checkAlergiaLatex">Látex</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlergiaNinguna"
+                                            name="alergia_ninguna">
+                                        <label class="input-custom form-check-label" for="checkAlergiaNinguna">Ninguna</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textareaAlergiaOtra" placeholder="Otra"
+                                        name="alergia_otra">
+                                    <label for="textareaAlergiaOtra">Otra</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Enfermedades Dermatológicas</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDDermatitisAtopica"
+                                            value="Asma" name="ed_dermatitis_atopica">
+                                        <label class="input-custom form-check-label" for="checkEDDermatitisAtopica">Dermatitis
+                                            atópica</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDAcne" name="ed_acne">
+                                        <label class="input-custom form-check-label" for="checkEDAcne">Acné</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDUrticaria"
+                                            name="ed_urticaria">
+                                        <label class="input-custom form-check-label" for="checkEDUrticaria">Urticaria</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDVitiligo"
+                                            name="ed_vitiligo">
+                                        <label class="input-custom form-check-label" for="checkEDVitiligo">Vitíligo</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDQueratosis"
+                                            name="ed_queratosis">
+                                        <label class="input-custom form-check-label" for="checkEDQueratosis">Queratosis</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDSarna" name="ed_sarna">
+                                        <label class="input-custom form-check-label" for="checkEDSarna">Sarna</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDPieAtleta"
+                                            name="ed_pie_atleta">
+                                        <label class="input-custom form-check-label" for="checkEDPieAtleta">Pie de atleta</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDHongos" name="ed_hongos">
+                                        <label class="input-custom form-check-label" for="checkEDHongos">Hongos</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEDNinguna" name="ed_ninguna">
+                                        <label class="input-custom form-check-label" for="checkEDNinguna">Ninguna</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textareaEDOtra" placeholder="Otra"
+                                        name="ed_otra">
+                                    <label for="textareaEDOtra">Otra</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Antecedentes Quirúrgicos</h3>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="radioSiQuirurgico" value=True
+                                            name="tiene_cirugia">
+                                        <label class="input-custom form-check-label" for="radioSiQuirurgico">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="radioNoQuirurgico" value=False
+                                            name="tiene_cirugia">
+                                        <label class="input-custom form-check-label" for="radioNoQuirurgico">No</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="textAreaCirugia" placeholder="Área"
+                                        name="area_cirugia">
+                                    <label for="textAreaCirugia">Área</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <input type="text" class="input-custom form-control" id="textMotivoCirugia" placeholder="Motivo"
+                                        name="motivo_cirugia">
+                                    <label for="textMotivoCirugia">Motivo</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Utilización de Fármacos</h3>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="radioSiFarmaco" value=True
+                                            name="tiene_farmaco">
+                                        <label class="input-custom form-check-label" for="radioSiFarmaco">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="radioNoFarmaco" value=False
+                                            name="tiene_farmaco">
+                                        <label class="input-custom form-check-label" for="radioSiFarmaco">No</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="text" class="input-custom form-control" id="textFarmacoFrecuencia" placeholder="Frecuencia"
+                                        name="farmaco_frecuencia">
+                                    <label for="textFarmacoFrecuencia">Frecuencia</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="text" class="input-custom form-control" id="textFarmacoDosificacion"
+                                        placeholder="Dosificación" name="farmaco_dosificacion">
+                                    <label for="textFarmacoDosificacion">Dosificación</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center" hidden>Utilización de Fármacos</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="text" class="input-custom form-control" id="textNombreFarmaco"
+                                        placeholder="Nombre del Fármaco" name="nombre_farmaco">
+                                    <label for="textNombreFarmaco">Nombre del Fármaco</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="textFarmacoAnticonceptivo"
+                                        placeholder="Farmácos por anticoncepción" name="farmaco_anticoceptivo">
+                                    <label for="textFarmacoAnticonceptivo">Farmácos por anticoncepción</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="textOtroMotivo"
+                                        placeholder="Farmácos por otro motivo" name="farmaco_otro_motivo">
+                                    <label for="textOtroMotivo">Farmácos por otro motivo</label>
+                                </div>
+                                
+                            </div>
+                    
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Implantes</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkDiu" name="implante_diu">
+                                        <label class="input-custom form-check-label" for="checkDiu">Implante
+                                            Anticonceptivo Diu</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkMamoplastia"
+                                            name="implante_mamoplastia">
+                                        <label class="input-custom form-check-label" for="checkMamoplastia">Mamoplastia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkArticulaciones"
+                                            name="implante_articulacion">
+                                        <label class="input-custom form-check-label" for="checkArticulaciones">Implantes de
+                                            articulaciones</label>
+                                        <div class="form-floating">
+                                            <input type="text" class="input-custom form-control" id="textAreaArticulacion"
+                                                placeholder="Área" name="area_articulacion">
+                                            <label for="textAreaArticulacion">Área</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkNingunImplante"
+                                            name="ningun_implante">
+                                        <label class="input-custom form-check-label" for="checkNingunImplante">Ninguna</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textOtroImplante" placeholder="Otro"
+                                        name="otro_implante">
+                                    <label for="textOtroImplante">Otro</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Transtornos Sanguíneos</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkProblemaPlaquetario"
+                                            name="transtorno_plaquetas">
+                                        <label class="input-custom form-check-label" for="checkProblemaPlaquetario">Problemas
+                                            plaquetarios</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAnemias"
+                                            name="transtorno_anemia">
+                                        <label class="input-custom form-check-label" for="checkAnemias">Anemias</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkCoagulacionExcesiva"
+                                            name="transtorno_coagulacion">
+                                        <label class="input-custom form-check-label" for="checkCoagulacionExcesiva">Coagulación
+                                            excesiva</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkHemofilia"
+                                            name="transtorno_hemofilia">
+                                        <label class="input-custom form-check-label" for="checkHemofilia">Hemofilia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkTrombocitopenia"
+                                            name="transtorno_trombocitopenia">
+                                        <label class="input-custom form-check-label" for="checkTrombocitopenia">Trombocitopenia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkTrombocitosis"
+                                            name="transtorno_trombocitosis">
+                                        <label class="input-custom form-check-label" for="checkTrombocitosis">Trombocitosis</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textOtroTranstorno" placeholder="Otro"
+                                        name="transtorno_otro">
+                                    <label for="textOtroTranstorno">Otro</label>
+                                </div>
+                            </div>
+                    
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Enfermedades Mentales</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkEsquizofrenia" value="Asma"
+                                            name="mental_esquizofrenia">
+                                        <label class="input-custom form-check-label" for="checkEsquizofrenia">Esquizofrenia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkBipolar"
+                                            name="mental_bipolar">
+                                        <label class="input-custom form-check-label" for="checkBipolar">Trastorno bipolar</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkDemencia"
+                                            name="mental_demencia">
+                                        <label class="input-custom form-check-label" for="checkDemencia">Demencia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkDepresivo"
+                                            name="mental_depresivo">
+                                        <label class="input-custom form-check-label" for="checkDepresivo">Trastorno depresivo</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textMentalOtro" placeholder="Otra"
+                                        name="mental_otra">
+                                    <label for="textMentalOtro">Otra</label>
+                                </div>
+                            </div>
+                    
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Trastornos Alimenticios</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAnorexia" value="Asma"
+                                            name="transtorno_anorexia">
+                                        <label class="input-custom form-check-label" for="checkAnorexia">Anorexia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAtracon"
+                                            name="transtorno_atracon">
+                                        <label class="input-custom form-check-label" for="checkAtracon">Trastorno por atracón</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkBulimia"
+                                            name="transtorno_bulimia">
+                                        <label class="input-custom form-check-label" for="checkBulimia">Bulimia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlimenticioNinguno"
+                                            name="transtorno_alimenticio_ningun">
+                                        <label class="input-custom form-check-label" for="checkAlimenticioNinguno">Ninguna</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textOtroAlimenticio" placeholder="Otra"
+                                        name="transtorno_alimenticio_otro">
+                                    <label for="textOtroAlimenticio">Otra</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Fobias</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkClaustrofobia"
+                                            name="fobia_claustrofobia">
+                                        <label class="input-custom form-check-label" for="checkClaustrofobia">Claustrofobia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkHidrofobia"
+                                            name="fobia_hidrofobia">
+                                        <label class="input-custom form-check-label" for="checkHidrofobia">Hidrofobia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkIatrofobia"
+                                            name="fobia_iatrofobia">
+                                        <label class="input-custom form-check-label" for="checkIatrofobia">Iatrofobia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkHefefobia"
+                                            name="fobia_hafefobia">
+                                        <label class="input-custom form-check-label" for="checkHefefobia">Hafefobia</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkFobiaNinguna"
+                                            name="fobia_ninguna">
+                                        <label class="input-custom form-check-label" for="checkFobiaNinguna">Ninguna</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textFobiaOtra" placeholder="Otra"
+                                        name="fobia_otra">
+                                    <label for="textFobiaOtra">Otra</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Hábitos</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12 text-center">
+                                    <img src="{{ url_for('static', filename='images/piramide-alimentos.jpg') }}"
+                                        class="img-fluid rounded-start w-75" alt="piramide-alimenticia">
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Nro. de Comidas</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkUnaComida"
+                                            name="habito_nro_comidas" value="1">
+                                        <label class="input-custom form-check-label" for="checkUnaComida">Una comida al
+                                            día</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDosComidas"
+                                            name="habito_nro_comidas" value="2">
+                                        <label class="input-custom form-check-label" for="checkDosComidas">Dos comidas al día</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkTresComidas"
+                                            name="habito_nro_comidas" value="3">
+                                        <label class="input-custom form-check-label" for="checkTresComidas">Tres comidas al día</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="number" class="input-custom form-control" id="textOtraComida" placeholder="Otra"
+                                        name="habito_otro_nro_comidas" min="4">
+                                    <label for="textOtraComida">Otra</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Comidas principales</h3>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkDesayuno" value="Asma"
+                                            name="comida_desayuno">
+                                        <label class="input-custom form-check-label" for="checkDesayuno"> Desayuno</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkAlmuerzo"
+                                            name="comida_almuerzo">
+                                        <label class="input-custom form-check-label" for="checkAlmuerzo">Almuerzo</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="checkbox" id="checkMerienda"
+                                            name="comida_merienda">
+                                        <label class="input-custom form-check-label" for="checkMerienda">Merienda</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Tiempo entre Refrigerios</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkRefrigerioDosHoras" value="2"
+                                            name="tiempo_refrigerio">
+                                        <label class="input-custom form-check-label" for="checkRefrigerioDosHoras">Refrigerios: Cada 2
+                                            horas</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkRefrigerioTresHoras" value="3"
+                                            name="tiempo_refrigerio">
+                                        <label class="input-custom form-check-label" for="checkRefrigerioTresHoras">Cada 3 horas</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkRefrigerioCuatroHoras" value="4"
+                                            name="tiempo_refrigerio">
+                                        <label class="input-custom form-check-label" for="checkRefrigerioCuatroHoras">Cada 4 horas</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkRefrigerioPrincipales" value="igual"
+                                            name="tiempo_refrigerio">
+                                        <label class="input-custom form-check-label" for="checkRefrigerioPrincipales">Igual que las
+                                            principales</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="number" class="input-custom form-control" id="textOtroTiempoRefrigerio"
+                                        placeholder="Otro tiempo" name="otro_tiempo_refrigerio">
+                                    <label for="textOtroTiempoRefrigerio">Otro tiempo</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Consumo de agua</h3>
+                                </div>
+                                <div class="form-floating col-md-10">
+                                    <input type="number" class="input-custom form-control" id="textNroVasosAgua"
+                                        placeholder="Nro. de vasos al día" name="nro_vasos_agua">
+                                    <label for="textNroVasosAgua">Nro. de vasos al día</label>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Hábitos Tóxicos</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Consumo de Alcohol</h3>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiAlcohol" value=True
+                                            name="habito_toxico_alcohol">
+                                        <label class="input-custom form-check-label" for="checkSiAlcohol">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoAlcohol"
+                                            name="habito_toxico_alcohol">
+                                        <label class="input-custom form-check-label" for="checkNoAlcohol">No</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textFrecuenciaHoras"
+                                        placeholder="Frecuencia en horas" name="habito_alcohol_horas">
+                                    <label for="textFrecuenciaHoras">Frecuencia en horas</label>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textAlcoholFrecuenciaDias"
+                                        placeholder="Frecuencia en días" name="habito_alcohol_dias">
+                                    <label for="textAlcoholFrecuenciaDias">Frecuencia en días</label>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textAlcoholFrecuenciaSemanas"
+                                        placeholder="Frecuencia en semanas" name="habito_alcohol_semanas">
+                                    <label for="textAlcoholFrecuenciaSemanas">Frecuencia en semanas</label>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textUltimoConsumoAlcohol"
+                                        placeholder="Último consumo" name="habito_alcohol_ultimo_consumo">
+                                    <label for="textUltimoConsumoAlcohol">Último consumo</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Consumo de Tabaco</h3>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiTabaco" value=True
+                                            name="habito_toxico_tabaco">
+                                        <label class="input-custom form-check-label" for="checkSiTabaco">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoTabaco" value=False
+                                            name="habito_toxico_tabaco">
+                                        <label class="input-custom form-check-label" for="checkNoTabaco">No</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-lg-2">
+                                    <input type="text" class="input-custom form-control" id="textTabacoFrecuenciaHoras"
+                                        placeholder="Frecuencia en horas" name="habito_tabaco_horas">
+                                    <label for="textTabacoFrecuenciaHoras">Frecuencia en horas</label>
+                                </div>
+                                <div class="form-floating col-lg-3">
+                                    <input type="text" class="input-custom form-control" id="textTabacoFrecuenciaDias"
+                                        placeholder="Frecuencia en días" name="habito_tabaco_dias">
+                                    <label for="textTabacoFrecuenciaDias">Frecuencia en días</label>
+                                </div>
+                                <div class="form-floating col-lg-3">
+                                    <input type="text" class="input-custom form-control" id="textTabacoFrecuenciaSemanas"
+                                        placeholder="Frecuencia en semanas" name="habito_tabaco_semanas">
+                                    <label for="textTabacoFrecuenciaSemanas">Frecuencia en semanas</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center" hidden>Consumo de Tabaco</h3>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <input type="text" class="input-custom form-control" id="textTabacoNro"
+                                        placeholder="Nro. de Cajetillas/Cigarros" name="habito_tabaco_nro">
+                                    <label for="textTabacoNro">Nro. de Cajetillas/Cigarros</label>
+                                </div>
+                                <div class="form-floating col-md-5">
+                                    <input type="text" class="input-custom form-control" id="textTabacoUltimoConsumo"
+                                        placeholder="Último consumo" name="habito_tabaco_ultimo_consumo">
+                                    <label for="textTabacoUltimoConsumo">Último consumo</label>
+                                </div>
+                    
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Consumo de Alucinógenos o Drogas</h3>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiDrogas"
+                                            name="habito_toxico_drogas" value=True>
+                                        <label class="input-custom form-check-label" for="checkSiDrogas">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoDrogas"
+                                            name="habito_toxico_drogas" value=False>
+                                        <label class="input-custom form-check-label" for="checkNoDrogas">No</label>
+                                    </div>
+                    
+                                </div>
+                                
+                                <div class="col-md-8 text-center">
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDrogasExperimental"
+                                            value="Experimental" name="habito_drogas_consumo">
+                                        <label class="input-custom form-check-label" for="checkDrogasExperimental">Experimental</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDrogasOcasional"
+                                            value="Ocasional" name="habito_drogas_consumo">
+                                        <label class="input-custom form-check-label" for="checkDrogasOcasional">Ocasional</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDrogasHabitual" value="Habitual"
+                                            name="habito_drogas_consumo">
+                                        <label class="input-custom form-check-label" for="checkDrogasHabitual">Habitual</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDrogasDependiente"
+                                            value="Dependiente" name="habito_drogas_consumo">
+                                        <label class="input-custom form-check-label" for="checkDrogasDependiente">Dependiente</label>
+                                    </div>
+                                </div>
+                    
+                    
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center" hidden>Consumo de Alucinógenos o Drogas</h3>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textDrogasFrecuenciaHoras"
+                                        placeholder="Frecuencia en días" name="habito_drogas_horas">
+                                    <label for="textDrogasFrecuenciaHoras">Frecuencia en horas</label>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textDrogasFrecuenciaDias"
+                                        placeholder="Frecuencia en días" name="habito_drogas_dias">
+                                    <label for="textDrogasFrecuenciaDias">Frecuencia en días</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="textDrogasFrecuenciaSemanas"
+                                        placeholder="Frecuencia en días" name="habito_drogas_semanas">
+                                    <label for="textDrogasFrecuenciaDias">Frecuencia en semanas</label>
+                                </div>
+                                <div class="form-floating col-md-3">
+                                    <input type="text" class="input-custom form-control" id="textDrogasUltimoConsumo"
+                                        placeholder="Frecuencia en días" name="habito_drogas_ultimo_consumo">
+                                    <label for="textDrogasUltimoConsumo">Último consumo</label>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </div>
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Actividades Personales</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Actividad Física</h3>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    Realiza alguna actividad: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiActividadFisica" value=True
+                                            name="realizar_actividad_fisica">
+                                        <label class="input-custom form-check-label" for="checkSiActividadFisica">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoActividadFisica" value=False
+                                            name="realizar_actividad_fisica">
+                                        <label class="input-custom form-check-label" for="checkNoActividadFisica">No</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-8">
+                                    <input type="text" class="input-custom form-control" id="textTipoActividad"
+                                        placeholder="Tipo de actividad o deporte" name="actividad_tipo">
+                                    <label for="textTipoActividad">Tipo de actividad o deporte</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center" hidden>Actividad Física</h3>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textActividadFrecuenciaMinutos"
+                                        placeholder="Minutos" name="actividad_minutos">
+                                    <label for="textActividadFrecuenciaMinutos">Minutos</label>
+                                </div>
+                                <div class="form-floating col-md-2">
+                                    <input type="text" class="input-custom form-control" id="textActividadFrecuenciaHoras"
+                                        placeholder="Horas" name="actividad_horas">
+                                    <label for="textActividadFrecuenciaHoras">Horas</label>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    Frecuencia: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkActividad12" value="1-2"
+                                            name="frecuencia_actividad">
+                                        <label class="input-custom form-check-label" for="checkActividad12">1-2</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkActividad23" value="2-3"
+                                            name="frecuencia_actividad">
+                                        <label class="input-custom form-check-label" for="checkActividad23">2-3</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkActividad34" value="3-4"
+                                            name="frecuencia_actividad">
+                                        <label class="input-custom form-check-label" for="checkActividad34">3-4</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkActividad45" value="4-5"
+                                            name="frecuencia_actividad">
+                                        <label class="input-custom form-check-label" for="checkActividad45">4-5</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkActividad67" value="6-7"
+                                            name="frecuencia_actividad">
+                                        <label class="input-custom form-check-label" for="checkActividad67">6-7</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkActividad7" value="7"
+                                            name="frecuencia_actividad">
+                                        <label class="input-custom form-check-label" for="checkActividad7">7 veces a la semana</label>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="input-custom text-center">Descanso</h3>
+                                </div>
+                                <div class="col-md-10 text-center">
+                                    Horas de sueño: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSuenio12" value="1-2"
+                                            name="horas_descanso">
+                                        <label class="input-custom form-check-label" for="checkSuenio12">1-2</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSuenio23" value="2-3"
+                                            name="horas_descanso">
+                                        <label class="input-custom form-check-label" for="checkSuenio23">2-3</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSuenio34" value="3-4"
+                                            name="horas_descanso">
+                                        <label class="input-custom form-check-label" for="checkSuenio34">3-4</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSuenio45" value="4-5"
+                                            name="horas_descanso">
+                                        <label class="input-custom form-check-label" for="checkSuenio45">4-5</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSuenio67" value="6-7"
+                                            name="horas_descanso">
+                                        <label class="input-custom form-check-label" for="checkSuenio67">6-7</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSuenio78" value="7-8"
+                                            name="horas_descanso">
+                                        <label class="input-custom form-check-label" for="checkSuenio78">7-8</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSuenio79" value="8-9"
+                                            name="horas_descanso">
+                                        <label class="input-custom form-check-label" for="checkSuenio79">8-9 o más</label>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                    
+                    
+                        </div>
+                    </div>
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Motivo Consulta</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textMotivoConsulta" name="motivo_consulta" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Enfermedad Actual</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textEnfermedadActual" name="enfermedad_actual" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Observación</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textConsultaObservacion" name="consulta_observacion" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Inspección</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center">
+                                    <h4>Valoración postural en los diferentes planos anatómicos</h4>
+                                </div>
+                            </div>
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center">
+                                    <h4>Plano antero-posterior (vista anterior)</h4>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5>Puntos de relación anatómica del plano anterior</h5>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    1. Entrecejo: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiEntrecejo" value=True
+                                            name="inspeccion_entrecejo">
+                                        <label class="input-custom form-check-label" for="checkSiEntrecejo">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoEntrecejo" value=False
+                                            name="inspeccion_entrecejo">
+                                        <label class="input-custom form-check-label" for="checkNoEntrecejo">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    2. Punta de la nariz: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiPuntaNariz" value=True
+                                            name="inspeccion_punta_nariz">
+                                        <label class="input-custom form-check-label" for="checkSiPuntaNariz">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoPuntaNariz" value=False
+                                            name="inspeccion_punta_nariz">
+                                        <label class="input-custom form-check-label" for="checkNoPuntaNariz">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    3. Ángulo mentoniano: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiAnguloMentoniano" value=True
+                                            name="inspeccion_angulo_mentoniano">
+                                        <label class="input-custom form-check-label" for="checkSiAnguloMentoniano">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoAnguloMentoniano" value=False
+                                            name="inspeccion_angulo_mentoniano">
+                                        <label class="input-custom form-check-label" for="checkNoAnguloMentoniano">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    4. Manubrio esteral: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiManubrioEsteral" value=True
+                                            name="inspeccion_manubrio_esteral">
+                                        <label class="input-custom form-check-label" for="checkSiManubrioEsteral">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoManubrioEsteral" value=False
+                                            name="inspeccion_manubrio_esteral">
+                                        <label class="input-custom form-check-label" for="checkNoManubrioEsteral">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    5. Apófisis xifoides: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiApofisisXifoides" value=True
+                                            name="inspeccion_apofisis_xifoides">
+                                        <label class="input-custom form-check-label" for="checkSiApofisisXifoides">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoApofisisXifoides" value=False
+                                            name="inspeccion_apofisis_xifoides">
+                                        <label class="input-custom form-check-label" for="checkNoApofisisXifoides">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    6. Ombligo: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiOmbligo" value=True
+                                            name="inspeccion_ombligo">
+                                        <label class="input-custom form-check-label" for="checkSiOmbligo">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoOmbligo" value=False
+                                            name="inspeccion_ombligo">
+                                        <label class="input-custom form-check-label" for="checkNoOmbligo">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    7. Sínfisis púbica: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiSinfisisPubica" value=True
+                                            name="inspeccion_sinfisis_pubica">
+                                        <label class="input-custom form-check-label" for="checkSiSinfisisPubica">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoSinfisisPubica" value=False
+                                            name="inspeccion_sinfisis_pubica">
+                                        <label class="input-custom form-check-label" for="checkNoSinfisisPubica">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    8. Centro de la base de sustentación: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiCentroSustentacion" value=True
+                                            name="inspeccion_centro_sustentacion">
+                                        <label class="input-custom form-check-label" for="checkSiCentroSustentacion">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoCentroSustentacion" value=False
+                                            name="inspeccion_centro_sustentacion">
+                                        <label class="input-custom form-check-label" for="checkNoCentroSustentacion">No</label>
+                                    </div>
+                                </div>
+                    
+                                <div class="col-md-12 mt-4">
+                                    <h5>Alineación de las estructuras en un plano anterior</h5>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    1. Altura de los ojos: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiAlturaOjos" value=True
+                                            name="inspeccion_altura_ojos">
+                                        <label class="input-custom form-check-label" for="checkSiAlturaOjos">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoAlturaOjos" value=False
+                                            name="inspeccion_altura_ojos">
+                                        <label class="input-custom form-check-label" for="checkNoAlturaOjos">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    2. Pabellones auriculares: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiPabellonesAuriculares"
+                                            value=True name="inspeccion_pabellones_auriculares">
+                                        <label class="input-custom form-check-label" for="checkSiPabellonesAuriculares">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoPabellonesAuriculares"
+                                            value=False name="inspeccion_pabellones_auriculares">
+                                        <label class="input-custom form-check-label" for="checkNoPabellonesAuriculares">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    3. Altura del acromion: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiAlturaAcromion" value=True
+                                            name="inspeccion_altura_acromion">
+                                        <label class="input-custom form-check-label" for="checkSiAlturaAcromion">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoAlturaAcromion" value=False
+                                            name="inspeccion_altura_acromion">
+                                        <label class="input-custom form-check-label" for="checkNoAlturaAcromion">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    4. Línea de los pliegues infra-mamarios: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiInframamarios" value=True
+                                            name="inspeccion_inframamarios">
+                                        <label class="input-custom form-check-label" for="checkSiInframamarios">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoInframamarios" value=False
+                                            name="inspeccion_inframamarios">
+                                        <label class="input-custom form-check-label" for="checkNoInframamarios">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    5. Espinas iliacas superiores: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiIliacasSuperiores" value=True
+                                            name="inspeccion_iliacas_superiores">
+                                        <label class="input-custom form-check-label" for="checkSiIliacasSuperiores">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoIliacasSuperiores" value=False
+                                            name="inspeccion_iliacas_superiores">
+                                        <label class="input-custom form-check-label" for="checkNoIliacasSuperiores">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    6. Base de la patela: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiBasePatela" value=True
+                                            name="inspeccion_base_patela">
+                                        <label class="input-custom form-check-label" for="checkSiBasePatela">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoBasePatela" value=False
+                                            name="inspeccion_base_patela">
+                                        <label class="input-custom form-check-label" for="checkNoBasePatela">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    7. Maléolos internos: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiMaleolosInternos" value=True
+                                            name="inspeccion_maleolos_internos">
+                                        <label class="input-custom form-check-label" for="checkSiMaleolosInternos">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoMaleolosInternos" value=False
+                                            name="inspeccion_maleolos_internos">
+                                        <label class="input-custom form-check-label" for="checkNoMaleolosInternos">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center">
+                                    <h4>Plano antero-posterior (vista anterior)</h4>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5>Lineas Verticales</h5>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    1. Protuberancia occipital: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiProtuberanciaOccipital"
+                                            value=True name="inspeccion_protuberancia_occipital">
+                                        <label class="input-custom form-check-label" for="checkSiProtuberanciaOccipital">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoProtuberanciaOccipital"
+                                            value=False name="inspeccion_protuberancia_occipital">
+                                        <label class="input-custom form-check-label" for="checkNoProtuberanciaOccipital">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    2. Apófisis espinosas de las vértebras: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiApofisisEspinosas" value=True
+                                            name="inspeccion_apofisis_espinosas">
+                                        <label class="input-custom form-check-label" for="checkSiApofisisEspinosas">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoApofisisEspinosas" value=False
+                                            name="inspeccion_apofisis_espinosas">
+                                        <label class="input-custom form-check-label" for="checkNoApofisisEspinosas">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    3. Línea Interglútea: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiLineaInterglutea" value=True
+                                            name="inspeccion_linea_interglutea">
+                                        <label class="input-custom form-check-label" for="checkSiLineaInterglutea">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoLineaInterglutea" value=False
+                                            name="inspeccion_linea_interglutea">
+                                        <label class="input-custom form-check-label" for="checkNoLineaInterglutea">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    4. Centro de la base de sustentación: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiCentroSustentacion2" value=True
+                                            name="inspeccion_centro_sustentacion_2">
+                                        <label class="input-custom form-check-label" for="checkSiCentroSustentacion2">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoCentroSustentacion2" value=False
+                                            name="inspeccion_centro_sustentacion_2">
+                                        <label class="input-custom form-check-label" for="checkNoCentroSustentacion2">No</label>
+                                    </div>
+                                </div>
+                    
+                                <div class="col-md-12 mt-4">
+                                    <h5>Lineas Horizontales</h5>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    5. Pabellones auriculares: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiPabellonesAuriculares2"
+                                            value=True name="inspeccion_pabellones_auriculares_2">
+                                        <label class="input-custom form-check-label" for="checkSiPabellonesAuriculares2">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoPabellonesAuriculares2"
+                                            value=False name="inspeccion_pabellones_auriculares_2">
+                                        <label class="input-custom form-check-label" for="checkNoPabellonesAuriculares2">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    6. Ángulo de la escapula: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiAnguloEscapula"
+                                            value=True name="inspeccion_angulo_escapula">
+                                        <label class="input-custom form-check-label" for="checkSiAnguloEscapula">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoAnguloEscapula"
+                                            value=False name="inspeccion_angulo_escapula">
+                                        <label class="input-custom form-check-label" for="checkNoAnguloEscapula">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    7. Espinas iliacas postero superiores: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiEspinaIliacas" value=True
+                                            name="inspeccion_espina_iliacas">
+                                        <label class="input-custom form-check-label" for="checkSiEspinaIliacas">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoEspinaIliacas" value=False
+                                            name="inspeccion_espina_iliacas">
+                                        <label class="input-custom form-check-label" for="checkNoEspinaIliacas">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    8. Pliegue glúteo inferior: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiGluteoInferior" value=True
+                                            name="inspeccion_gluteo_inferior">
+                                        <label class="input-custom form-check-label" for="checkSiGluteoInferior">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoGluteoInferior" value=False
+                                            name="inspeccion_gluteo_inferior">
+                                        <label class="input-custom form-check-label" for="checkNoGluteoInferior">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    9. Pliegue poplíteo: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiPlieguePopliteo" value=True
+                                            name="inspeccion_pliegue_popliteo">
+                                        <label class="input-custom form-check-label" for="checkSiPlieguePopliteo">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoPlieguePopliteo" value=False
+                                            name="inspeccion_pliegue_popliteo">
+                                        <label class="input-custom form-check-label" for="checkNoPlieguePopliteo">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    10. Calcáneos: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiCalcaneos" value=True
+                                            name="inspeccion_calcaneos">
+                                        <label class="input-custom form-check-label" for="checkSiCalcaneos">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoCalcaneos" value=False
+                                            name="inspeccion_calcaneos">
+                                        <label class="input-custom form-check-label" for="checkNoCalcaneos">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 mt-4 text-center">
+                                    <h4>Plano sagital (vista lateral derecho)</h4>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5>Puntos de relación anatómica de lateral derecho</h5>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    1. Conducto auditivo externo: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiConductoAuditivoDerecho"
+                                            value=True name="inspeccion_conducto_auditivo_derecho">
+                                        <label class="input-custom form-check-label" for="checkSiConductoAuditivoDerecho">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoConductoAuditivoDerecho"
+                                            value=False name="inspeccion_conducto_auditivo_derecho">
+                                        <label class="input-custom form-check-label" for="checkNoConductoAuditivoDerecho">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    2. Proyección del Acromion: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiAcromionDerecho" value=True
+                                            name="inspeccion_acromion_derecho">
+                                        <label class="input-custom form-check-label" for="checkSiAcromionDerecho">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoAcromionDerecho" value=False
+                                            name="inspeccion_acromion_derecho">
+                                        <label class="input-custom form-check-label" for="checkNoAcromionDerecho">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    3. Proyección de los cuerpos de las vértebras lumbares: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiVertebrasDerecho" value=True
+                                            name="inspeccion_vertebras_derecho">
+                                        <label class="input-custom form-check-label" for="checkSiVertebrasDerecho">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoVertebrasDerecho" value=False
+                                            name="inspeccion_vertebras_derecho">
+                                        <label class="input-custom form-check-label" for="checkNoVertebrasDerecho">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    4. Trocánter mayor: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiTrocanterDerecho" value=True
+                                            name="inspeccion_trocante_derecho">
+                                        <label class="input-custom form-check-label" for="checkSiTrocanterDerecho">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoTrocanterDerecho" value=False
+                                            name="inspeccion_trocante_derecho">
+                                        <label class="input-custom form-check-label" for="checkNoTrocanterDerecho">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    5. Ligeramente delante del maléolo externo: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiMaleoloDerecho" value=True
+                                            name="inspeccion_maleolo_derecho">
+                                        <label class="input-custom form-check-label" for="checkSiMaleoloDerecho">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoMaleoloDerecho" value=False
+                                            name="inspeccion_maleolo_derecho">
+                                        <label class="input-custom form-check-label" for="checkNoMaleoloDerecho">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 mt-4 text-center">
+                                    <h4>Plano sagital (vista lateral izquierdo)</h4>
+                                </div>
+                                <div class="col-md-12">
+                                    <h5>Puntos de relación anatómica de lateral izquierdo</h5>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    1. Conducto auditivo externo: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiConductoAuditivoIzquierdo"
+                                            value=True name="inspeccion_conducto_auditivo_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkSiConductoAuditivoIzquierdo">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoConductoAuditivoIzquierdo"
+                                            value=False name="inspeccion_conducto_auditivo_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkNoConductoAuditivoIzquierdo">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    2. Proyección del Acromion: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiAcromionIzquierdo" value=True
+                                            name="inspeccion_acromion_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkSiAcromionIzquierdo">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoAcromionIzquierdo" value=False
+                                            name="inspeccion_acromion_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkNoAcromionIzquierdo">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    3. Proyección de los cuerpos de las vértebras lumbares: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiVertebrasIzquierdo" value=True
+                                            name="inspeccion_vertebras_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkSiVertebrasIzquierdo">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoVertebrasIzquierdo" value=False
+                                            name="inspeccion_vertebras_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkNoVertebrasIzquierdo">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    4. Trocánter mayor: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiTrocanterIzquierdo" value=True
+                                            name="inspeccion_trocante_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkSiTrocanterIzquierdo">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoTrocanterIzquierdo" value=False
+                                            name="inspeccion_trocante_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkNoTrocanterIzquierdo">No</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    5. Ligeramente delante del maléolo externo: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkSiMaleoloIzquierdo" value=True
+                                            name="inspeccion_maleolo_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkSiMaleoloIzquierdo">Sí</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkNoMaleoloIzquierdo" value=False
+                                            name="inspeccion_maleolo_izquierdo">
+                                        <label class="input-custom form-check-label" for="checkNoMaleoloIzquierdo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Valoración en Camilla</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textValoracionCamilla" name="valoracion_camilla"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Palpación</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textPalpacion" name="palpacion" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Auscultación</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textAuscultacion" name="auscultacion" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Percusión</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textPercusion" name="percusion" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Escala Visual Analógica de Dolor (EVA)</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12 text-center">
+                                    <label for="rangeDolorEVA" class="form-label">
+                                        <p class="valor_emoji" style="font-size: 30px;" id="emoji_id">5</p>
+                                        <p class="emoji" style="font-size: 120px;">😐</p>
+                                    </label>
+                                    
+                                    <br>
+                                    <input name="escala_dolor_eva" type="range" class="form-range w-75" min="0" max="10" step="1"
+                                        id="rangeDolorEVA" required>
+                                    <div class="w-75 mx-auto p-2 d-flex justify-content-between text-center">
+                                        <span>0</span>
+                                        <span>1</span>
+                                        <span>2</span>
+                                        <span>3</span>
+                                        <span>4</span>
+                                        <span>5</span>
+                                        <span>6</span>
+                                        <span>7</span>
+                                        <span>8</span>
+                                        <span>9</span>
+                                        <span>10</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Escala de Daniels</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12 text-center">
+                                    <img src="{{ url_for('static', filename='images/escala-daniels.jpg') }}"
+                                        class="img-fluid rounded-start w-50" alt="escala-daniels">
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 mt-2 pb-3 align-items-center">
+                                <div class="col-md-5 text-center">
+                                    Seleccionar: <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDaniels0" value="0"
+                                            name="daniels_seleccionar">
+                                        <label class="input-custom form-check-label" for="checkDaniels0">0</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDaniels1" value="1"
+                                            name="daniels_seleccionar">
+                                        <label class="input-custom form-check-label" for="checkDaniels1">1</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDaniels2" value="2"
+                                            name="daniels_seleccionar">
+                                        <label class="input-custom form-check-label" for="checkDaniels2">2</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDaniels3" value="3"
+                                            name="daniels_seleccionar">
+                                        <label class="input-custom form-check-label" for="checkDaniels3">3</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDaniels4" value="4"
+                                            name="daniels_seleccionar">
+                                        <label class="input-custom form-check-label" for="checkDaniels4">4</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="input-custom form-check-input" type="radio" id="checkDaniels5" value="5"
+                                            name="daniels_seleccionar">
+                                        <label class="input-custom form-check-label" for="checkDaniels5">5</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating col-md-7">
+                                    <input type="text" class="input-custom form-control" id="textDanielsEspecificar"
+                                        placeholder="Especificar" name="daniels_especificar">
+                                    <label for="textDanielsEspecificar">Especificar</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Goniometría</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center">
+                                    <h4>HOMBRO</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Flexión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroDerechoFlexion"
+                                        placeholder="Grado (Derecha)" name="hombro_flexion_derecha">
+                                    <label for="textHombroDerechoFlexion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroIzquierdoFlexion"
+                                        placeholder="Grado (Izquierda)" name="hombro_flexion_izquierda">
+                                    <label for="textHombroIzquierdoFlexion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Extensión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroDerechoExtension"
+                                        placeholder="Grado (Derecha)" name="hombro_extension_derecha">
+                                    <label for="textHombroDerechoExtension">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroIzquierdoExtension"
+                                        placeholder="Grado (Izquierda)" name="hombro_extension_izquierda">
+                                    <label for="textHombroIzquierdoExtension">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Abducción</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroDerechoAbduccion"
+                                        placeholder="Grado (Derecha)" name="hombro_abduccion_derecha">
+                                    <label for="textHombroDerechoAbduccion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroIzquierdoAbduccion"
+                                        placeholder="Grado (Izquierda)" name="hombro_abduccion_izquierda">
+                                    <label for="textHombroIzquierdoAbduccion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Aducción</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroDerechoAduccion"
+                                        placeholder="Grado (Derecha)" name="hombro_aduccion_derecha">
+                                    <label for="textHombroDerechoAduccion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroIzquierdoAduccion"
+                                        placeholder="Grado (Izquierda)" name="hombro_aduccion_izquierda">
+                                    <label for="textHombroIzquierdoAduccion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Rotación interna</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroDerechoRotacionInterna"
+                                        placeholder="Grado (Derecha)" name="hombro_rotacion_interna_derecha">
+                                    <label for="textHombroDerechoRotacionInterna">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroIzquierdoRotacionInterna"
+                                        placeholder="Grado (Izquierda)" name="hombro_rotacion_interna_izquierda">
+                                    <label for="textHombroIzquierdoRotacionInterna">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Rotación externa</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroDerechoRotacionExterna"
+                                        placeholder="Grado (Derecha)" name="hombro_rotacion_externa_derecha">
+                                    <label for="textHombroDerechoRotacionExterna">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textHombroIzquierdoRotacionExterna"
+                                        placeholder="Grado (Izquierda)" name="hombro_rotacion_externa_izquierda">
+                                    <label for="textHombroIzquierdoRotacionExterna">Grado (Izquierda)</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center mt-4">
+                                    <h4>CODO</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Flexión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCodoDerecholexion"
+                                        placeholder="Grado (Derecha)" name="codo_flexion_derecha">
+                                    <label for="textCodoDerecholexion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCodoIzquierdoFlexion"
+                                        placeholder="Grado (Izquierda)" name="codo_flexion_izquierda">
+                                    <label for="textCodoIzquierdoFlexion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Extensión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCodoDerechoExtension"
+                                        placeholder="Grado (Derecha)" name="codo_extension_derecha">
+                                    <label for="textCodoDerechoExtension">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCodoIzquierdoExtension"
+                                        placeholder="Grado (Izquierda)" name="codo_extension_izquierda">
+                                    <label for="textCodoIzquierdoExtension">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Pronación</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCodoDerechoPronacion"
+                                        placeholder="Grado (Derecha)" name="codo_pronacion_derecha">
+                                    <label for="textCodoDerechoPronacion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCodoIzquierdoPronacion"
+                                        placeholder="Grado (Izquierda)" name="codo_pronacion_izquierda">
+                                    <label for="textCodoIzquierdoPronacion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Supinación</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCodoDerechoSupinacion"
+                                        placeholder="Grado (Derecha)" name="codo_supinacion_derecha">
+                                    <label for="textCodoDerechoSupinacion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCodoIzquierdoSupinacion"
+                                        placeholder="Grado (Izquierda)" name="codo_supinacion_izquierda">
+                                    <label for="textCodoIzquierdoSupinacion">Grado (Izquierda)</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center mt-4">
+                                    <h4>MUÑECA</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Flexión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textMunecaDerecholexion"
+                                        placeholder="Grado (Derecha)" name="muneca_flexion_derecha">
+                                    <label for="textMunecaDerecholexion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textMunecaIzquierdoFlexion"
+                                        placeholder="Grado (Izquierda)" name="muneca_flexion_izquierda">
+                                    <label for="textMunecaIzquierdoFlexion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Extensión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textMunecaDerechoExtension"
+                                        placeholder="Grado (Derecha)" name="muneca_extension_derecha">
+                                    <label for="textMunecaDerechoExtension">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textMunecaIzquierdoExtension"
+                                        placeholder="Grado (Izquierda)" name="muneca_extension_izquierda">
+                                    <label for="textMunecaIzquierdoExtension">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Desviación radial</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textMunecaDerechoRadial"
+                                        placeholder="Grado (Derecha)" name="muneca_radial_derecha">
+                                    <label for="textMunecaDerechoRadial">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textMunecaIzquierdoRadial"
+                                        placeholder="Grado (Izquierda)" name="muneca_radial_izquierda">
+                                    <label for="textMunecaIzquierdoRadial">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Desviación cubital</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textMunecaDerechoCubital"
+                                        placeholder="Grado (Derecha)" name="muneca_cubital_derecha">
+                                    <label for="textMunecaDerechoCubital">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textMunecaIzquierdoCubital"
+                                        placeholder="Grado (Izquierda)" name="muneca_cubital_izquierda">
+                                    <label for="textMunecaIzquierdoCubital">Grado (Izquierda)</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center">
+                                    <h4>CADERA</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Flexión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaDerechoFlexion"
+                                        placeholder="Grado (Derecha)" name="cadera_flexion_derecha">
+                                    <label for="textCaderaDerechoFlexion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaIzquierdoFlexion"
+                                        placeholder="Grado (Izquierda)" name="cadera_flexion_izquierda">
+                                    <label for="textCaderaIzquierdoFlexion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Extensión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaDerechoExtension"
+                                        placeholder="Grado (Derecha)" name="cadera_extension_derecha">
+                                    <label for="textCaderaDerechoExtension">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaIzquierdoExtension"
+                                        placeholder="Grado (Izquierda)" name="cadera_extension_izquierda">
+                                    <label for="textCaderaIzquierdoExtension">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Abducción</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaDerechoAbduccion"
+                                        placeholder="Grado (Derecha)" name="cadera_abduccion_derecha">
+                                    <label for="textCaderaDerechoAbduccion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaIzquierdoAbduccion"
+                                        placeholder="Grado (Izquierda)" name="cadera_abduccion_izquierda">
+                                    <label for="textCaderaIzquierdoAbduccion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Aducción</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaDerechoAduccion"
+                                        placeholder="Grado (Derecha)" name="cadera_aduccion_derecha">
+                                    <label for="textCaderaDerechoAduccion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaIzquierdoAduccion"
+                                        placeholder="Grado (Izquierda)" name="cadera_aduccion_izquierda">
+                                    <label for="textCaderaIzquierdoAduccion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Rotación interna</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaDerechoRotacionInterna"
+                                        placeholder="Grado (Derecha)" name="cadera_rotacion_interna_derecha">
+                                    <label for="textCaderaDerechoRotacionInterna">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaIzquierdoRotacionInterna"
+                                        placeholder="Grado (Izquierda)" name="cadera_rotacion_interna_izquierda">
+                                    <label for="textCaderaIzquierdoRotacionInterna">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Rotación externa</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaDerechoRotacionExterna"
+                                        placeholder="Grado (Derecha)" name="cadera_rotacion_externa_derecha">
+                                    <label for="textCaderaDerechoRotacionExterna">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textCaderaIzquierdoRotacionExterna"
+                                        placeholder="Grado (Izquierda)" name="cadera_rotacion_externa_izquierda">
+                                    <label for="textCaderaIzquierdoRotacionExterna">Grado (Izquierda)</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center">
+                                    <h4>RODILLA</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Flexión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textRodillaDerechoFlexion"
+                                        placeholder="Grado (Derecha)" name="rodilla_flexion_derecha">
+                                    <label for="textRodillaDerechoFlexion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textRodillaIzquierdoFlexion"
+                                        placeholder="Grado (Izquierda)" name="rodilla_flexion_izquierda">
+                                    <label for="textRodillaIzquierdoFlexion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Extensión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textRodillaDerechoExtension"
+                                        placeholder="Grado (Derecha)" name="rodilla_extension_derecha">
+                                    <label for="textRodillaDerechoExtension">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textRodillaIzquierdoExtension"
+                                        placeholder="Grado (Izquierda)" name="rodilla_extension_izquierda">
+                                    <label for="textRodillaIzquierdoExtension">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Rotación interna</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textRodillaDerechoRotacionInterna"
+                                        placeholder="Grado (Derecha)" name="rodilla_rotacion_interna_derecha">
+                                    <label for="textRodillaDerechoRotacionInterna">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textRodillaIzquierdoRotacionInterna"
+                                        placeholder="Grado (Izquierda)" name="rodilla_rotacion_interna_izquierda">
+                                    <label for="textRodillaIzquierdoRotacionInterna">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Rotación externa</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textRodillaDerechoRotacionExterna"
+                                        placeholder="Grado (Derecha)" name="rodilla_rotacion_externa_derecha">
+                                    <label for="textRodillaDerechoRotacionExterna">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textRodillaIzquierdoRotacionExterna"
+                                        placeholder="Grado (Izquierda)" name="rodilla_rotacion_externa_izquierda">
+                                    <label for="textRodillaIzquierdoRotacionExterna">Grado (Izquierda)</label>
+                                </div>
+                            </div>
+                    
+                            <div class="border row g-3 pb-3 align-items-center">
+                                <div class="col-md-12 text-center">
+                                    <h4>TOBILLO</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Flexión plantar</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textTobilloDerechoFlexion"
+                                        placeholder="Grado (Derecha)" name="tobillo_flexion_derecha">
+                                    <label for="textTobilloDerechoFlexion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textTobilloIzquierdoFlexion"
+                                        placeholder="Grado (Izquierda)" name="tobilla_flexion_izquierda">
+                                    <label for="textTobilloIzquierdoFlexion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Dorsi flexión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textTobilloDerechoDorsiflexion"
+                                        placeholder="Grado (Derecha)" name="tobillo_dorsiflexion_derecha">
+                                    <label for="textTobilloDerechoDorsiflexion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textTobilloIzquierdoDorsiflexion"
+                                        placeholder="Grado (Izquierda)" name="tobillo_dorsiflexion_izquierda">
+                                    <label for="textTobilloIzquierdoDorsiflexion">Grado (Izquierda)</label>
+                                </div>
+                    
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Inversión</h3>
+                                </div>
+                    
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textTobilloDerechoInversion"
+                                        placeholder="Grado (Derecha)" name="tobillo_inversion_derecha">
+                                    <label for="textTobilloDerechoInversion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textTobilloIzquierdoInversion"
+                                        placeholder="Grado (Izquierda)" name="tobillo_inversion_izquierda">
+                                    <label for="textTobilloIzquierdoInversion">Grado (Izquierda)</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3 class="input-custom text-center">Eversión</h3>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textTobilloDerechoEversion"
+                                        placeholder="Grado (Derecha)" name="tobillo_eversion_derecha">
+                                    <label for="textTobilloDerechoEversion">Grado (Derecha)</label>
+                                </div>
+                                <div class="form-floating col-md-4">
+                                    <input type="number" class="input-custom form-control" id="textTobilloIzquierdoEversion"
+                                        placeholder="Grado (Izquierda)" name="tobillo_eversion_izquierda">
+                                    <label for="textTobilloIzquierdoEversion">Grado (Izquierda)</label>
+                                </div>
+                            </div>
+                    
+                    
+                    
+                        </div>
+                    </div>
+                    <!--  -->
+
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Diagnóstico Kinésico</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textDiagnosticoKinestico" name="diagnostico_kinestico"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Objetivo a corto plazo</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textObjetivoCorto" name="objetivo_corto_plazo"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Objetivo a mediano plazo</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textObjetivoMediano" name="objetivo_mediano_plazo"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Objetivo a Largo plazo</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textObjetivoLargo" name="objetivo_largo_plazo"
+                                        rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center card text-white bg-dark w-100 mx-auto mt-2">
+                        <div class="card-header text-center">
+                            <h3>Tratamiento</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <textarea class="input-custom form-control" id="textTratamiento" name="tratamiento" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-danger">Confirmar</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var emojis = ['😀', '🙂', '😐', '🙁', '☹️', '😭'];
+
+    $("#rangeDolorEVA").on("input", function () {
+        var i = Math.floor($(this).val() / 2);
+        var j = $(this).val();
+        $(".emoji").html(emojis[i]);
+        $(".valor_emoji").html(j);
+    });
+</script>
 
 <script src="{{ url_for('static', filename='js/crud.js') }}"></script>
 

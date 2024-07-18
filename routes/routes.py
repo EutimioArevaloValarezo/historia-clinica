@@ -6,7 +6,7 @@ from passlib.hash import pbkdf2_sha256
 from functools import wraps
 from flask_weasyprint import HTML, render_pdf
 from flask import request, render_template, redirect, url_for, session, jsonify, flash
-from routes.control import guardar_historia_clinica, obtener_historias, obtener_usuario, crear_usuario, obtener_historia
+from routes.control import guardar_historia_clinica, obtener_historias, obtener_usuario, crear_usuario, obtener_historia, editar_historia_clinica
 from app import app
 from db import db
 
@@ -124,7 +124,8 @@ def get_historia():
     historia = obtener_historia(id_historia)
     if historia:
         return jsonify({'paciente': historia['registro_paciente']['nombres'] +" "+historia['registro_paciente']['apellidos'],
-                        'expediente': historia['historia_clinica']['nro_expediente']})
+                        'expediente': historia['historia_clinica']['nro_expediente'],
+                        'historia': historia})
     else:
         return jsonify({ 'error': 'Error grave' })
     
@@ -138,6 +139,15 @@ def eliminiar_historia():
     flash("Expediente Nro. "+ historia['historia_clinica']['nro_expediente'] + " de: " +historia['registro_paciente']['nombres']+ " " + historia['registro_paciente']['apellidos'] + " eliminado correctamente!", 'success')
     return redirect(url_for('listar_historia'))
 
+@app.route('/editar_historia', methods=['POST'])
+@requerir_logeo
+def editar_historia():
+    id_historia = request.form.get('name_editar_historia')
+    print("NAMEEEEE"+ id_historia)
+    editar_historia_clinica(request, id_historia)
+    
+    flash("Se actualizó correctamente", 'success')
+    return redirect(url_for('listar_historia'))
 
 @app.route('/exportar_historia_clinica')
 @requerir_logeo
