@@ -143,7 +143,6 @@ def eliminiar_historia():
 @requerir_logeo
 def editar_historia():
     id_historia = request.form.get('name_editar_historia')
-    print("NAMEEEEE"+ id_historia)
     editar_historia_clinica(request, id_historia)
     
     flash("Se actualizó correctamente", 'success')

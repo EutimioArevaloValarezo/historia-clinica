@@ -49,42 +49,42 @@ def guardar_historia_clinica(request):
         },
         'antecedente_heredofamiliar': {
             'congenita': {
-                'padecimiento': bool(request.form.get('enfermedad_congenita')),
+                'padecimiento': request.form.get('enfermedad_congenita') == 'True',
                 'parentesco': request.form.get('congenita_parentesco'),
                 'especificar': request.form.get('congenita_especificar')
             },
             'infecciosa': {
-                'padecimiento': bool(request.form.get('enfermedad_infecciosa')),
+                'padecimiento': request.form.get('enfermedad_infecciosa') == 'True',
                 'parentesco': request.form.get('infecciosa_parentesco'),
                 'especificar': request.form.get('infecciosa_especificar')
             },
             'metabolica': {
-                'padecimiento': bool(request.form.get('enfermedad_metabolica')),
+                'padecimiento': request.form.get('enfermedad_metabolica') == 'True',
                 'parentesco': request.form.get('metabolica_parentesco'),
                 'especificar': request.form.get('metabolica_especificar')
             },
             'musculoesqueletico': {
-                'padecimiento': bool(request.form.get('enfermedad_musculoesqueletico')),
+                'padecimiento': request.form.get('enfermedad_musculoesqueletico') == 'True',
                 'parentesco': request.form.get('musculoesqueletico_parentesco'),
                 'especificar': request.form.get('musculoesqueletico_especificar')
             },
             'cardiovascular': {
-                'padecimiento': bool(request.form.get('enfermedad_cardiovascular')),
+                'padecimiento': request.form.get('enfermedad_cardiovascular') == 'True',
                 'parentesco': request.form.get('cardiovascular_parentesco'),
                 'especificar': request.form.get('cardiovascular_especificar')
             },
             'respiratoria': {
-                'padecimiento': bool(request.form.get('enfermedad_respiratoria')),
+                'padecimiento': request.form.get('enfermedad_respiratoria')== 'True',
                 'parentesco': request.form.get('respiratoria_parentesco'),
                 'especificar': request.form.get('respiratoria_especificar')
             },
             'oncologica': {
-                'padecimiento': bool(request.form.get('enfermedad_oncologica')),
+                'padecimiento': request.form.get('enfermedad_oncologica') == 'True',
                 'parentesco': request.form.get('oncologica_parentesco'),
                 'especificar': request.form.get('oncologica_especificar')
             },
             'otra': {
-                'padecimiento': bool(request.form.get('enfermedad_otra')),
+                'padecimiento': request.form.get('enfermedad_otra') == 'True',
                 'parentesco': request.form.get('otra_parentesco'),
                 'especificar': request.form.get('otra_especificar')
             }
@@ -113,13 +113,13 @@ def guardar_historia_clinica(request):
                 'otra': request.form.get('ed_otra') 
             },
             'quirurgico':{
-                'tiene_cirugia': bool(request.form.get('tiene_cirugia')),
+                'tiene_cirugia': request.form.get('tiene_cirugia')  == 'True',
                 'area_cirugia': request.form.get('area_cirugia'),
                 'motivo_cirugia': request.form.get('motivo_cirugia')
             },
             'farmaco':{
                 'nombre': request.form.get('nombre_farmaco'),
-                'tiene_farmaco': bool(request.form.get('tiene_farmaco')),
+                'tiene_farmaco': request.form.get('tiene_farmaco')  == 'True',
                 'anticoncepcion': request.form.get('farmaco_anticoceptivo'),
                 'otro_motivo': request.form.get('farmaco_otro_motivo'),
                 'frecuencia': request.form.get('farmaco_frecuencia'),
@@ -183,14 +183,14 @@ def guardar_historia_clinica(request):
         },
         'habitos_toxicos':{
             'alcohol':{
-                'consumo': bool(request.form.get('habito_toxico_alcohol')),
+                'consumo': request.form.get('habito_toxico_alcohol')  == 'True',
                 'frecuencia_horas': request.form.get('habito_alcohol_horas'),
                 'frecuencia_dias': request.form.get('habito_alcohol_dias'),
                 'frecuencia_semanas': request.form.get('habito_alcohol_semanas'),
                 'ultimo_consumo': request.form.get('habito_alcohol_ultimo_consumo')
             },
             'tabaco': {
-                'consumo': bool(request.form.get('habito_toxico_tabaco')),
+                'consumo': request.form.get('habito_toxico_tabaco')  == 'True',
                 'frecuencia_horas': request.form.get('habito_tabaco_horas'),
                 'frecuencia_dias': request.form.get('habito_tabaco_dias'),
                 'frecuencia_semanas': request.form.get('habito_tabaco_semanas'),
@@ -198,7 +198,7 @@ def guardar_historia_clinica(request):
                 'ultimo_consumo': request.form.get('habito_tabaco_ultimo_consumo'),
             },
             'drogas':{
-                'consumo': bool(request.form.get('habito_toxico_drogas')),
+                'consumo': request.form.get('habito_toxico_drogas')  == 'True',
                 'tipo_consumo': request.form.get('habito_drogas_consumo'),
                 'frecuencia_horas': request.form.get('habito_drogas_horas'),
                 'frecuencia_dias': request.form.get('habito_drogas_dias'),
@@ -208,7 +208,7 @@ def guardar_historia_clinica(request):
         },
         'actividad_personal':{
             'fisica': {
-                'realizar': bool(request.form.get('habito_toxico_drogas')),
+                'realizar': request.form.get('habito_toxico_drogas')  == 'True',
                 'tipo': request.form.get('actividad_tipo'),
                 'tiempo_minutos': request.form.get('actividad_minutos'),
                 'tiempo_horas': request.form.get('actividad_horas'),
@@ -222,48 +222,48 @@ def guardar_historia_clinica(request):
         'enfermedad_actual': request.form.get('enfermedad_actual'),
         'observacion': request.form.get('consulta_observacion'),
         'inspeccion': {
-            'panto_antero_anterior': {
-                'entrecejo': bool(request.form.get('inspeccion_entrecejo')),
-                'punta_nariz': bool(request.form.get('inspeccion_punta_nariz')),
-                'angulo_mentoniano': bool(request.form.get('inspeccion_angulo_mentoniano')),
-                'manubrio_esteral': bool(request.form.get('inspeccion_manubrio_esteral')),
-                'apofisis_xifoides': bool(request.form.get('inspeccion_apofisis_xifoides')),
-                'ombligo': bool(request.form.get('inspeccion_ombligo')),
-                'sinfisis_pubica': bool(request.form.get('inspeccion_sinfisis_pubica')),
-                'centro_sustentacion': bool(request.form.get('inspeccion_centro_sustentacion')),
-                'altura_ojos': bool(request.form.get('inspeccion_altura_ojos')),
-                'pabellones_auriculares': bool(request.form.get('inspeccion_pabellones_auriculares')),
-                'altura_acromion': bool(request.form.get('inspeccion_altura_acromion')),
-                'pliegues_inframamarios': bool(request.form.get('inspeccion_inframamarios')),
-                'espinas_iliacas': bool(request.form.get('inspeccion_iliacas_superiores')),
-                'base_patela': bool(request.form.get('inspeccion_base_patela')),
-                'maleolos_internos': bool(request.form.get('inspeccion_maleolos_internos')),
+            'plano_antero_anterior': {
+                'entrecejo': request.form.get('inspeccion_entrecejo') == 'True',
+                'punta_nariz': request.form.get('inspeccion_punta_nariz') == 'True',
+                'angulo_mentoniano': request.form.get('inspeccion_angulo_mentoniano') == 'True',
+                'manubrio_esteral': request.form.get('inspeccion_manubrio_esteral') == 'True',
+                'apofisis_xifoides': request.form.get('inspeccion_apofisis_xifoides') == 'True',
+                'ombligo': request.form.get('inspeccion_ombligo') == 'True',
+                'sinfisis_pubica': request.form.get('inspeccion_sinfisis_pubica') == 'True',
+                'centro_sustentacion': request.form.get('inspeccion_centro_sustentacion') == 'True',
+                'altura_ojos': request.form.get('inspeccion_altura_ojos') == 'True',
+                'pabellones_auriculares': request.form.get('inspeccion_pabellones_auriculares') == 'True',
+                'altura_acromion': request.form.get('inspeccion_altura_acromion') == 'True',
+                'pliegues_inframamarios': request.form.get('inspeccion_inframamarios') == 'True',
+                'espinas_iliacas': request.form.get('inspeccion_iliacas_superiores') == 'True',
+                'base_patela': request.form.get('inspeccion_base_patela') == 'True',
+                'maleolos_internos': request.form.get('inspeccion_maleolos_internos') == 'True',
             },
             'plano_antero_posterior':{
-                'protuberancia_occipital': bool(request.form.get('inspeccion_protuberancia_occipital')),
-                'apofisis_espinosas': bool(request.form.get('inspeccion_apofisis_espinosas')),
-                'linea_interglutea': bool(request.form.get('inspeccion_linea_interglutea')),
-                'centro_sustentacion': bool(request.form.get('inspeccion_centro_sustentacion_2')),
-                'pabellones_auriculares': bool(request.form.get('inspeccion_pabellones_auriculares_2')),
-                'angulo_escapula': bool(request.form.get('inspeccion_angulo_escapula')),
-                'espina_iliacas': bool(request.form.get('inspeccion_espina_iliacas')),
-                'gluteo_inferior': bool(request.form.get('inspeccion_gluteo_inferior')),
-                'pliegue_popliteo': bool(request.form.get('inspeccion_pliegue_popliteo')),
-                'calcaneos': bool(request.form.get('inspeccion_calcaneos'))
+                'protuberancia_occipital': request.form.get('inspeccion_protuberancia_occipital') == 'True',
+                'apofisis_espinosas': request.form.get('inspeccion_apofisis_espinosas') == 'True',
+                'linea_interglutea': request.form.get('inspeccion_linea_interglutea') == 'True',
+                'centro_sustentacion': request.form.get('inspeccion_centro_sustentacion_2') == 'True',
+                'pabellones_auriculares': request.form.get('inspeccion_pabellones_auriculares_2') == 'True',
+                'angulo_escapula': request.form.get('inspeccion_angulo_escapula') == 'True',
+                'espina_iliacas': request.form.get('inspeccion_espina_iliacas') == 'True',
+                'gluteo_inferior': request.form.get('inspeccion_gluteo_inferior') == 'True',
+                'pliegue_popliteo': request.form.get('inspeccion_pliegue_popliteo') == 'True',
+                'calcaneos': request.form.get('inspeccion_calcaneos') == 'True'
             },
             'plano_sagital_derecho':{
-                'conducto_auditivo_derecho': bool(request.form.get('inspeccion_conducto_auditivo_derecho')),
-                'acromion_derecho': bool(request.form.get('inspeccion_acromion_derecho')),
-                'vertebras_derecho': bool(request.form.get('inspeccion_vertebras_derecho')),
-                'trocante_derecho': bool(request.form.get('inspeccion_trocante_derecho')),
-                'maleolo_derecho': bool(request.form.get('inspeccion_maleolo_derecho')),    
+                'conducto_auditivo_derecho': request.form.get('inspeccion_conducto_auditivo_derecho') == 'True',
+                'acromion_derecho': request.form.get('inspeccion_acromion_derecho') == 'True',
+                'vertebras_derecho': request.form.get('inspeccion_vertebras_derecho') == 'True',
+                'trocante_derecho': request.form.get('inspeccion_trocante_derecho') == 'True',
+                'maleolo_derecho': request.form.get('inspeccion_maleolo_derecho') == 'True',    
             },
             'planp_sagital_izquierdo':{
-                'conducto_auditivo_izquierdo': bool(request.form.get('inspeccion_conducto_auditivo_izquierdo')),
-                'acromion_izquierdo': bool(request.form.get('inspeccion_acromion_izquierdo')),
-                'vertebras_izquierdo': bool(request.form.get('inspeccion_vertebras_izquierdo')),
-                'trocante_izquierdo': bool(request.form.get('inspeccion_trocante_izquierdo')),
-                'maleolo_izquierdo': bool(request.form.get('inspeccion_maleolo_izquierdo')),   
+                'conducto_auditivo_izquierdo': request.form.get('inspeccion_conducto_auditivo_izquierdo') == 'True',
+                'acromion_izquierdo': request.form.get('inspeccion_acromion_izquierdo') == 'True',
+                'vertebras_izquierdo': request.form.get('inspeccion_vertebras_izquierdo') == 'True',
+                'trocante_izquierdo': request.form.get('inspeccion_trocante_izquierdo') == 'True',
+                'maleolo_izquierdo': request.form.get('inspeccion_maleolo_izquierdo') == 'True',   
             }
         },
         'valoracion_camilla': request.form.get('valoracion_camilla'),
@@ -387,42 +387,42 @@ def editar_historia_clinica(request, id_historia):
         },
         'antecedente_heredofamiliar': {
             'congenita': {
-                'padecimiento': bool(request.form.get('enfermedad_congenita')),
+                'padecimiento': request.form.get('enfermedad_congenita') == 'True',
                 'parentesco': request.form.get('congenita_parentesco'),
                 'especificar': request.form.get('congenita_especificar')
             },
             'infecciosa': {
-                'padecimiento': bool(request.form.get('enfermedad_infecciosa')),
+                'padecimiento': request.form.get('enfermedad_infecciosa') == 'True',
                 'parentesco': request.form.get('infecciosa_parentesco'),
                 'especificar': request.form.get('infecciosa_especificar')
             },
             'metabolica': {
-                'padecimiento': bool(request.form.get('enfermedad_metabolica')),
+                'padecimiento': request.form.get('enfermedad_metabolica') == 'True',
                 'parentesco': request.form.get('metabolica_parentesco'),
                 'especificar': request.form.get('metabolica_especificar')
             },
             'musculoesqueletico': {
-                'padecimiento': bool(request.form.get('enfermedad_musculoesqueletico')),
+                'padecimiento': request.form.get('enfermedad_musculoesqueletico') == 'True',
                 'parentesco': request.form.get('musculoesqueletico_parentesco'),
                 'especificar': request.form.get('musculoesqueletico_especificar')
             },
             'cardiovascular': {
-                'padecimiento': bool(request.form.get('enfermedad_cardiovascular')),
+                'padecimiento': request.form.get('enfermedad_cardiovascular') == 'True',
                 'parentesco': request.form.get('cardiovascular_parentesco'),
                 'especificar': request.form.get('cardiovascular_especificar')
             },
             'respiratoria': {
-                'padecimiento': bool(request.form.get('enfermedad_respiratoria')),
+                'padecimiento': request.form.get('enfermedad_respiratoria') == 'True',
                 'parentesco': request.form.get('respiratoria_parentesco'),
                 'especificar': request.form.get('respiratoria_especificar')
             },
             'oncologica': {
-                'padecimiento': bool(request.form.get('enfermedad_oncologica')),
+                'padecimiento': request.form.get('enfermedad_oncologica') == 'True',
                 'parentesco': request.form.get('oncologica_parentesco'),
                 'especificar': request.form.get('oncologica_especificar')
             },
             'otra': {
-                'padecimiento': bool(request.form.get('enfermedad_otra')),
+                'padecimiento': request.form.get('enfermedad_otra') == 'True',
                 'parentesco': request.form.get('otra_parentesco'),
                 'especificar': request.form.get('otra_especificar')
             }
@@ -451,13 +451,13 @@ def editar_historia_clinica(request, id_historia):
                 'otra': request.form.get('ed_otra') 
             },
             'quirurgico':{
-                'tiene_cirugia': bool(request.form.get('tiene_cirugia')),
+                'tiene_cirugia': request.form.get('tiene_cirugia') == 'True',
                 'area_cirugia': request.form.get('area_cirugia'),
                 'motivo_cirugia': request.form.get('motivo_cirugia')
             },
             'farmaco':{
                 'nombre': request.form.get('nombre_farmaco'),
-                'tiene_farmaco': bool(request.form.get('tiene_farmaco')),
+                'tiene_farmaco': request.form.get('tiene_farmaco') == 'True',
                 'anticoncepcion': request.form.get('farmaco_anticoceptivo'),
                 'otro_motivo': request.form.get('farmaco_otro_motivo'),
                 'frecuencia': request.form.get('farmaco_frecuencia'),
@@ -521,14 +521,14 @@ def editar_historia_clinica(request, id_historia):
         },
         'habitos_toxicos':{
             'alcohol':{
-                'consumo': bool(request.form.get('habito_toxico_alcohol')),
+                'consumo': request.form.get('habito_toxico_alcohol') == 'True',
                 'frecuencia_horas': request.form.get('habito_alcohol_horas'),
                 'frecuencia_dias': request.form.get('habito_alcohol_dias'),
                 'frecuencia_semanas': request.form.get('habito_alcohol_semanas'),
                 'ultimo_consumo': request.form.get('habito_alcohol_ultimo_consumo')
             },
             'tabaco': {
-                'consumo': bool(request.form.get('habito_toxico_tabaco')),
+                'consumo': request.form.get('habito_toxico_tabaco') == 'True',
                 'frecuencia_horas': request.form.get('habito_tabaco_horas'),
                 'frecuencia_dias': request.form.get('habito_tabaco_dias'),
                 'frecuencia_semanas': request.form.get('habito_tabaco_semanas'),
@@ -536,7 +536,7 @@ def editar_historia_clinica(request, id_historia):
                 'ultimo_consumo': request.form.get('habito_tabaco_ultimo_consumo'),
             },
             'drogas':{
-                'consumo': bool(request.form.get('habito_toxico_drogas')),
+                'consumo': request.form.get('habito_toxico_drogas') == 'True',
                 'tipo_consumo': request.form.get('habito_drogas_consumo'),
                 'frecuencia_horas': request.form.get('habito_drogas_horas'),
                 'frecuencia_dias': request.form.get('habito_drogas_dias'),
@@ -546,7 +546,7 @@ def editar_historia_clinica(request, id_historia):
         },
         'actividad_personal':{
             'fisica': {
-                'realizar': bool(request.form.get('habito_toxico_drogas')),
+                'realizar': request.form.get('habito_toxico_drogas') == 'True',
                 'tipo': request.form.get('actividad_tipo'),
                 'tiempo_minutos': request.form.get('actividad_minutos'),
                 'tiempo_horas': request.form.get('actividad_horas'),
@@ -560,48 +560,48 @@ def editar_historia_clinica(request, id_historia):
         'enfermedad_actual': request.form.get('enfermedad_actual'),
         'observacion': request.form.get('consulta_observacion'),
         'inspeccion': {
-            'panto_antero_anterior': {
-                'entrecejo': bool(request.form.get('inspeccion_entrecejo')),
-                'punta_nariz': bool(request.form.get('inspeccion_punta_nariz')),
-                'angulo_mentoniano': bool(request.form.get('inspeccion_angulo_mentoniano')),
-                'manubrio_esteral': bool(request.form.get('inspeccion_manubrio_esteral')),
-                'apofisis_xifoides': bool(request.form.get('inspeccion_apofisis_xifoides')),
-                'ombligo': bool(request.form.get('inspeccion_ombligo')),
-                'sinfisis_pubica': bool(request.form.get('inspeccion_sinfisis_pubica')),
-                'centro_sustentacion': bool(request.form.get('inspeccion_centro_sustentacion')),
-                'altura_ojos': bool(request.form.get('inspeccion_altura_ojos')),
-                'pabellones_auriculares': bool(request.form.get('inspeccion_pabellones_auriculares')),
-                'altura_acromion': bool(request.form.get('inspeccion_altura_acromion')),
-                'pliegues_inframamarios': bool(request.form.get('inspeccion_inframamarios')),
-                'espinas_iliacas': bool(request.form.get('inspeccion_iliacas_superiores')),
-                'base_patela': bool(request.form.get('inspeccion_base_patela')),
-                'maleolos_internos': bool(request.form.get('inspeccion_maleolos_internos')),
+            'plano_antero_anterior': {
+                'entrecejo': request.form.get('inspeccion_entrecejo') == 'True',
+                'punta_nariz': request.form.get('inspeccion_punta_nariz') == 'True',
+                'angulo_mentoniano': request.form.get('inspeccion_angulo_mentoniano') == 'True',
+                'manubrio_esteral': request.form.get('inspeccion_manubrio_esteral') == 'True',
+                'apofisis_xifoides': request.form.get('inspeccion_apofisis_xifoides') == 'True',
+                'ombligo': request.form.get('inspeccion_ombligo') == 'True',
+                'sinfisis_pubica': request.form.get('inspeccion_sinfisis_pubica') == 'True',
+                'centro_sustentacion': request.form.get('inspeccion_centro_sustentacion') == 'True',
+                'altura_ojos': request.form.get('inspeccion_altura_ojos') == 'True',
+                'pabellones_auriculares': request.form.get('inspeccion_pabellones_auriculares') == 'True',
+                'altura_acromion': request.form.get('inspeccion_altura_acromion') == 'True',
+                'pliegues_inframamarios': request.form.get('inspeccion_inframamarios') == 'True',
+                'espinas_iliacas': request.form.get('inspeccion_iliacas_superiores') == 'True',
+                'base_patela': request.form.get('inspeccion_base_patela') == 'True',
+                'maleolos_internos': request.form.get('inspeccion_maleolos_internos') == 'True',
             },
             'plano_antero_posterior':{
-                'protuberancia_occipital': bool(request.form.get('inspeccion_protuberancia_occipital')),
-                'apofisis_espinosas': bool(request.form.get('inspeccion_apofisis_espinosas')),
-                'linea_interglutea': bool(request.form.get('inspeccion_linea_interglutea')),
-                'centro_sustentacion': bool(request.form.get('inspeccion_centro_sustentacion_2')),
-                'pabellones_auriculares': bool(request.form.get('inspeccion_pabellones_auriculares_2')),
-                'angulo_escapula': bool(request.form.get('inspeccion_angulo_escapula')),
-                'espina_iliacas': bool(request.form.get('inspeccion_espina_iliacas')),
-                'gluteo_inferior': bool(request.form.get('inspeccion_gluteo_inferior')),
-                'pliegue_popliteo': bool(request.form.get('inspeccion_pliegue_popliteo')),
-                'calcaneos': bool(request.form.get('inspeccion_calcaneos'))
+                'protuberancia_occipital': request.form.get('inspeccion_protuberancia_occipital') == 'True',
+                'apofisis_espinosas': request.form.get('inspeccion_apofisis_espinosas') == 'True',
+                'linea_interglutea': request.form.get('inspeccion_linea_interglutea') == 'True',
+                'centro_sustentacion': request.form.get('inspeccion_centro_sustentacion_2') == 'True',
+                'pabellones_auriculares': request.form.get('inspeccion_pabellones_auriculares_2') == 'True',
+                'angulo_escapula': request.form.get('inspeccion_angulo_escapula') == 'True',
+                'espina_iliacas': request.form.get('inspeccion_espina_iliacas') == 'True',
+                'gluteo_inferior': request.form.get('inspeccion_gluteo_inferior') == 'True',
+                'pliegue_popliteo': request.form.get('inspeccion_pliegue_popliteo') == 'True',
+                'calcaneos': request.form.get('inspeccion_calcaneos') == 'True'
             },
             'plano_sagital_derecho':{
-                'conducto_auditivo_derecho': bool(request.form.get('inspeccion_conducto_auditivo_derecho')),
-                'acromion_derecho': bool(request.form.get('inspeccion_acromion_derecho')),
-                'vertebras_derecho': bool(request.form.get('inspeccion_vertebras_derecho')),
-                'trocante_derecho': bool(request.form.get('inspeccion_trocante_derecho')),
-                'maleolo_derecho': bool(request.form.get('inspeccion_maleolo_derecho')),    
+                'conducto_auditivo_derecho': request.form.get('inspeccion_conducto_auditivo_derecho') == 'True',
+                'acromion_derecho': request.form.get('inspeccion_acromion_derecho') == 'True',
+                'vertebras_derecho': request.form.get('inspeccion_vertebras_derecho') == 'True',
+                'trocante_derecho': request.form.get('inspeccion_trocante_derecho') == 'True',
+                'maleolo_derecho': request.form.get('inspeccion_maleolo_derecho') == 'True',    
             },
             'planp_sagital_izquierdo':{
-                'conducto_auditivo_izquierdo': bool(request.form.get('inspeccion_conducto_auditivo_izquierdo')),
-                'acromion_izquierdo': bool(request.form.get('inspeccion_acromion_izquierdo')),
-                'vertebras_izquierdo': bool(request.form.get('inspeccion_vertebras_izquierdo')),
-                'trocante_izquierdo': bool(request.form.get('inspeccion_trocante_izquierdo')),
-                'maleolo_izquierdo': bool(request.form.get('inspeccion_maleolo_izquierdo')),   
+                'conducto_auditivo_izquierdo': request.form.get('inspeccion_conducto_auditivo_izquierdo') == 'True',
+                'acromion_izquierdo': request.form.get('inspeccion_acromion_izquierdo') == 'True',
+                'vertebras_izquierdo': request.form.get('inspeccion_vertebras_izquierdo') == 'True',
+                'trocante_izquierdo': request.form.get('inspeccion_trocante_izquierdo') == 'True',
+                'maleolo_izquierdo': request.form.get('inspeccion_maleolo_izquierdo') == 'True',   
             }
         },
         'valoracion_camilla': request.form.get('valoracion_camilla'),

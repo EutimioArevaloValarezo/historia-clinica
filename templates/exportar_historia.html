@@ -1204,7 +1204,7 @@
                 </td>
 
                 <td style="font-size: 40px;">
-                    {% set eva = historia["escalas"]["eva"] %}
+                    {% set eva = historia["escalas"]["eva"] | int %}
                     {% if 0 <= eva <=1 %} 😀 {% elif 2 <=eva <=3 %} 🙂 {% elif 4 <=eva <=5 %} 😐 {% elif 6 <=eva <=7 %}
                         🙁 {% elif 8 <=eva <=9 %} ☹️ {% elif eva==10 %} 😭 {% endif %} </td>
             </tr>

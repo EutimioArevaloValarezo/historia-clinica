@@ -33,67 +33,36 @@ $(document).ready(function () {
                 $('#inputRaza').val(historia.registro_paciente.raza);
                 $('#inputReligion').val(historia.registro_paciente.religion);
 
-                if (historia.antecedente_heredofamiliar.congenita.padecimiento){
-                    $('#inputSiCongenitas').prop('checked', true);
-                }else{
-                    $('#inputNoCongenitas').prop('checked', true);
-                }
+                
+                $('#input' + (historia.antecedente_heredofamiliar.congenita.padecimiento ? 'Si' : 'No') + 'Congenitas').prop('checked', true);
                 $('#floatingCongenitasParentesco').val(historia.antecedente_heredofamiliar.congenita.parentesco);
                 $('#floatingCongenitasEspecifique').val(historia.antecedente_heredofamiliar.congenita.especificar);
 
-                if (historia.antecedente_heredofamiliar.infecciosa.padecimiento){
-                    $('#inputSiInfecciosa').prop('checked', true);
-                }else{
-                    $('#inputNoInfecciosa').prop('checked', true);
-                }
+                $('#input' + (historia.antecedente_heredofamiliar.infecciosa.padecimiento ? 'Si' : 'No') + 'Infecciosa').prop('checked', true);
                 $('#floatingInfecciosaParentesco').val(historia.antecedente_heredofamiliar.infecciosa.parentesco);
                 $('#floatingInfecciosaEspecifique').val(historia.antecedente_heredofamiliar.infecciosa.especificar);
 
-                if (historia.antecedente_heredofamiliar.metabolica.padecimiento){
-                    $('#inputSiMetabolica').prop('checked', true);
-                }else{
-                    $('#inputNoMetabolica').prop('checked', true);
-                }
+                $('#input' + (historia.antecedente_heredofamiliar.metabolica.padecimiento ? 'Si' : 'No') + 'Metabolica').prop('checked', true);
                 $('#floatingMetabolicaParentesco').val(historia.antecedente_heredofamiliar.metabolica.parentesco);
                 $('#floatingMetabolicaEspecifique').val(historia.antecedente_heredofamiliar.metabolica.especificar);
 
-                if (historia.antecedente_heredofamiliar.musculoesqueletico.padecimiento){
-                    $('#inputSiMusculoesqueletico').prop('checked', true);
-                }else{
-                    $('#inputNoMusculoesqueletico').prop('checked', true);
-                }
+                $('#input' + (historia.antecedente_heredofamiliar.musculoesqueletico.padecimiento ? 'Si' : 'No') + 'Musculoesqueletico').prop('checked', true);
                 $('#floatingMusculoesqueleticoParentesco').val(historia.antecedente_heredofamiliar.musculoesqueletico.parentesco);
                 $('#floatingMusculoesqueleticoEspecifique').val(historia.antecedente_heredofamiliar.musculoesqueletico.especificar);
 
-                if (historia.antecedente_heredofamiliar.cardiovascular.padecimiento){
-                    $('#inputSiCardiovascular').prop('checked', true);
-                }else{
-                    $('#inputNoCardiovascular').prop('checked', true);
-                }
+                $('#input' + (historia.antecedente_heredofamiliar.cardiovascular.padecimiento ? 'Si' : 'No') + 'Cardiovascular').prop('checked', true);
                 $('#floatingCardiovascularParentesco').val(historia.antecedente_heredofamiliar.cardiovascular.parentesco);
                 $('#floatingCardiovascularEspecifique').val(historia.antecedente_heredofamiliar.cardiovascular.especificar);
 
-                if (historia.antecedente_heredofamiliar.respiratoria.padecimiento){
-                    $('#inputSiRespiratoria').prop('checked', true);
-                }else{
-                    $('#inputNoRespiratoria').prop('checked', true);
-                }
+                $('#input' + (historia.antecedente_heredofamiliar.respiratoria.padecimiento ? 'Si' : 'No') + 'Respiratoria').prop('checked', true);
                 $('#floatingRespiratoriasParentesco').val(historia.antecedente_heredofamiliar.respiratoria.parentesco);
                 $('#floatingRespiratoriasEspecifique').val(historia.antecedente_heredofamiliar.respiratoria.especificar);
 
-                if (historia.antecedente_heredofamiliar.oncologica.padecimiento){
-                    $('#inputSiOncologica').prop('checked', true);
-                }else{
-                    $('#inputNoOncologica').prop('checked', true);
-                }
+                $('#input' + (historia.antecedente_heredofamiliar.oncologica.padecimiento ? 'Si' : 'No') + 'Oncologica').prop('checked', true);
                 $('#floatingOncologicasParentesco').val(historia.antecedente_heredofamiliar.oncologica.parentesco);
                 $('#floatingOncologicasEspecifique').val(historia.antecedente_heredofamiliar.oncologica.especificar);
 
-                if (historia.antecedente_heredofamiliar.otra.padecimiento){
-                    $('#inputSiOtra').prop('checked', true);
-                }else{
-                    $('#inputNoOtra').prop('checked', true);
-                }
+                $('#input' + (historia.antecedente_heredofamiliar.otra.padecimiento ? 'Si' : 'No') + 'Otra').prop('checked', true);
                 $('#floatingOtrasParentesco').val(historia.antecedente_heredofamiliar.otra.parentesco);
                 $('#floatingOtrasEspecifique').val(historia.antecedente_heredofamiliar.otra.especificar);
 
