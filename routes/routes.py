@@ -1,10 +1,12 @@
 import os
 import dotenv
 
+from datetime import datetime
 from passlib.hash import pbkdf2_sha256
 from functools import wraps
+from flask_weasyprint import HTML, render_pdf
 from flask import request, render_template, redirect, url_for, session, jsonify, flash
-from routes.control import guardar_historia_clinica, obtener_historias, obtener_usuario, crear_usuario
+from routes.control import guardar_historia_clinica, obtener_historias, obtener_usuario, crear_usuario, obtener_historia
 from app import app
 from db import db
 
@@ -114,3 +116,20 @@ def agregar_historia_clinica():
 def listar_historia():
     historias = obtener_historias()
     return render_template('listado.html', historias=historias)
+
+@app.route('/exportar_historia_clinica')
+@requerir_logeo
+def exportar_historia_clinica(): 
+    # historia_clinica = request.form.get("id_historia_clinica")
+    historia_clinica = obtener_historia("5c059f7e82c4465a976dd682534ee78d")
+    historia_clinica["registro_paciente"]["fecha_nacimiento"] = datetime.strptime(historia_clinica["registro_paciente"]["fecha_nacimiento"], "%Y-%m-%d")
+    html = render_template('exportar_historia.html', historia=historia_clinica)
+    return render_pdf(HTML(string=html))
+
+@app.route('/ver_historia_clinica')
+def ver_historia_clinica(): 
+    # historia_clinica = request.form.get("id_historia_clinica")
+    historia_clinica = obtener_historia("5c059f7e82c4465a976dd682534ee78d")
+    historia_clinica["registro_paciente"]["fecha_nacimiento"] = datetime.strptime(historia_clinica["registro_paciente"]["fecha_nacimiento"], "%Y-%m-%d")
+    return render_template('exportar_historia.html', historia=historia_clinica)
+

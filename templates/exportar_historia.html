@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+        table {
+            width: 100%;
+            font-size: 12px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #titulo_1_tabla {
+            font-size: 14px;
+        }
+    </style>
+
+    <table class="table-responsive-sm table-bordered border-dark text-center">
+        <thead>
+            <tr>
+                <th colspan="8" id="titulo_1_tabla">HISTORIA CLÍNICA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Núm. de Expediente:</th>
+                <td class="px-2">{{ historia["historia_clinica"]["nro_expediente"] }}</th>
+                <th>Cama/Cubículo:</th>
+                <td>{{ historia["historia_clinica"]["cama_cubiculo"] }}</th>
+                <th>Fecha:</th>
+                <td>{{ historia["historia_clinica"]["fecha"] }}</th>
+                <th>Hora:</th>
+                <td>{{ historia["historia_clinica"]["hora"] }}</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table-responsive-sm table-bordered border-dark text-center mt-4">
+        <thead>
+            <tr>
+                <th colspan="8" id="titulo_1_tabla">REGISTRO DEL PACIENTE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Nombres:</th>
+                <td colspan="3">{{ historia["registro_paciente"]["nombres"] }}</td>
+                <th>Apellidos:</th>
+                <td>{{ historia["registro_paciente"]["apellidos"] }}</td>
+            </tr>
+            <tr>
+                <th>Edad:</th>
+                <td colspan="3">{{ historia["registro_paciente"]["edad"] }}</td>
+                <th>Sexo:</th>
+                <td>{{ historia["registro_paciente"]["sexo"] }}</td>
+            </tr>
+            <tr>
+                <th rowspan="2">Fecha Nacimiento:</th>
+                <th>DIA</th>
+                <th>MES</th>
+                <th>AÑO</th>
+                <th>Número de cédula:</th>
+                <td>{{ historia["registro_paciente"]["cedula"] }}</td>
+            </tr>
+            <tr>
+                <td>{{ historia["registro_paciente"]["fecha_nacimiento"].strftime('%d') }}</td>
+                <td>{{ historia["registro_paciente"]["fecha_nacimiento"].strftime('%m') }}</td>
+                <td>{{ historia["registro_paciente"]["fecha_nacimiento"].strftime('%Y') }}</td>
+                <th>Número de celular:</th>
+                <td>{{ historia["registro_paciente"]["celular"] }}</th>
+            </tr>
+            <tr>
+                <th>Estado civil:</th>
+                <td colspan="3">{{ historia["registro_paciente"]["estado_civil"] }}</td>
+                <th>Correo electrónico:</th>
+                <td>{{ historia["registro_paciente"]["correo"] }}</td>
+            </tr>
+            <tr>
+                <th>Lugar de nacimiento:</th>
+                <td colspan="3">{{ historia["registro_paciente"]["lugar_nacimiento"] }}</td>
+                <th>Nivel de instrucción:</th>
+                <td>{{ historia["registro_paciente"]["nivel_instruccion"] }}</td>
+            </tr>
+            <tr>
+                <th>Lugar de residencia:</th>
+                <td colspan="3">{{ historia["registro_paciente"]["lugar_recidencia"] }}</td>
+                <th>Ocupación:</th>
+                <td>{{ historia["registro_paciente"]["ocupacion"] }}</td>
+            </tr>
+            <tr>
+                <th>Dirección del Domicilio:</th>
+                <td colspan="3">{{ historia["registro_paciente"]["direccion_domicilio"] }}</td>
+                <th>Profesión:</th>
+                <td>{{ historia["registro_paciente"]["profesion"] }}</td>
+            </tr>
+            <tr>
+                <th>Seguro social:</th>
+                <td colspan="5">{{ historia["registro_paciente"]["seguro_social"] }}</td>
+            </tr>
+            <tr>
+                <th>Raza:</th>
+                <td colspan="3">{{ historia["registro_paciente"]["raza"] }}</td>
+                <th>Religión:</th>
+                <td>{{ historia["registro_paciente"]["religion"] }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table-responsive-sm table-bordered border-dark text-center mt-4">
+        <thead>
+            <tr>
+                <th colspan="5" id="titulo_1_tabla">ANTECEDENTES HEREDOFAMILIARES</th>
+            </tr>
+            <tr>
+                <th class="w-25">Enfermedad</th>
+                <th>Sí</th>
+                <th>No</th>
+                <th>Parentesco</th>
+                <th class="w-50">Especifique</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Enfermedades congénitas</th>
+                <td>
+                    {% if historia["antecedente_heredofamiliar"]["congenita"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not historia["antecedente_heredofamiliar"]["congenita"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>{{ historia["antecedente_heredofamiliar"]["congenita"]["parentesco"] }}</td>
+                <td class="text-start">{{ historia["antecedente_heredofamiliar"]["congenita"]["especificar"] }}</td>
+            </tr>
+            <tr>
+                <th>Enfermedades infecciosas</th>
+                <td>
+                    {% if historia["antecedente_heredofamiliar"]["infecciosa"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not historia["antecedente_heredofamiliar"]["infecciosa"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>{{ historia["antecedente_heredofamiliar"]["infecciosa"]["parentesco"] }}</td>
+                <td class="text-start">{{ historia["antecedente_heredofamiliar"]["infecciosa"]["especificar"] }}</td>
+            </tr>
+            <tr>
+                <th>Enfermedades metabólicas</th>
+                <td>
+                    {% if historia["antecedente_heredofamiliar"]["metabolica"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not historia["antecedente_heredofamiliar"]["metabolica"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>{{ historia["antecedente_heredofamiliar"]["metabolica"]["parentesco"] }}</td>
+                <td class="text-start">{{ historia["antecedente_heredofamiliar"]["metabolica"]["especificar"] }}</td>
+            </tr>
+            <tr>
+                <th>Enfermedades musculoesquelético</th>
+                <td>
+                    {% if historia["antecedente_heredofamiliar"]["musculoesqueletico"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not historia["antecedente_heredofamiliar"]["musculoesqueletico"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>{{ historia["antecedente_heredofamiliar"]["musculoesqueletico"]["parentesco"] }}</td>
+                <td class="text-start">{{ historia["antecedente_heredofamiliar"]["musculoesqueletico"]["especificar"] }}
+                </td>
+            </tr>
+            <tr>
+                <th>Enfermedades cardiovasculares</th>
+                <td>
+                    {% if historia["antecedente_heredofamiliar"]["cardiovascular"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not historia["antecedente_heredofamiliar"]["cardiovascular"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>{{ historia["antecedente_heredofamiliar"]["cardiovascular"]["parentesco"] }}</td>
+                <td class="text-start">{{ historia["antecedente_heredofamiliar"]["cardiovascular"]["especificar"] }}
+                </td>
+            </tr>
+            <tr>
+                <th>Enfermedades respiratorias</th>
+                <td>
+                    {% if historia["antecedente_heredofamiliar"]["respiratoria"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not historia["antecedente_heredofamiliar"]["respiratoria"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>{{ historia["antecedente_heredofamiliar"]["respiratoria"]["parentesco"] }}</td>
+                <td class="text-start">{{ historia["antecedente_heredofamiliar"]["respiratoria"]["especificar"] }}</td>
+            </tr>
+            <tr>
+                <th>Enfermedades oncológicas</th>
+                <td>
+                    {% if historia["antecedente_heredofamiliar"]["oncologica"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not historia["antecedente_heredofamiliar"]["oncologica"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>{{ historia["antecedente_heredofamiliar"]["oncologica"]["parentesco"] }}</td>
+                <td class="text-start">{{ historia["antecedente_heredofamiliar"]["oncologica"]["especificar"] }}</td>
+            </tr>
+            <tr>
+                <th>Otras</th>
+                <td>
+                    {% if historia["antecedente_heredofamiliar"]["otra"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not historia["antecedente_heredofamiliar"]["otra"]["padecimiento"] %}
+                    X
+                    {% endif %}
+                </td>
+                <td>{{ historia["antecedente_heredofamiliar"]["otra"]["parentesco"] }}</td>
+                <td class="text-start">{{ historia["antecedente_heredofamiliar"]["otra"]["especificar"] }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table-responsive-sm table-bordered border-dark text-center mt-4">
+        <thead>
+            <tr>
+                <th colspan="2" id="titulo_1_tabla">ANTECEDENTES PERSONALES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Alergias</th>
+                <td class="w-75 text-start">
+                    Asma (&nbsp;{% if historia["antecedente_personal"]["alergia"]["asma"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Rinitis (&nbsp;{% if historia["antecedente_personal"]["alergia"]["rinitis"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Conjuntivitis (&nbsp;{% if historia["antecedente_personal"]["alergia"]["conjuntivitis"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Alimentos (&nbsp;{% if historia["antecedente_personal"]["alergia"]["alimentos"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Medicamentos (&nbsp;{% if historia["antecedente_personal"]["alergia"]["medicamentos"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Látex (&nbsp;{% if historia["antecedente_personal"]["alergia"]["latex"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["alergia"]["ninguna"] %}X{% endif %}&nbsp;)
+                    <br><br>
+                    Otra: {{ historia["antecedente_personal"]["alergia"]["otra"] }}
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>Enfermedades Dermatológicas</th>
+                <td class="w-75 text-start">
+                    Dermatitis atópica (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["dermatitis_atopica"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Acné (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["acne"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Urticaria (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["urticaria"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Vitíligo (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["vitiligo"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Queratosis (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["queratosis"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Sarna (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["sarna"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Pie de atleta (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["pie_atleta"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Hongos (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["hongos"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["ninguna"] %}X{% endif %}&nbsp;)
+                    <br><br>
+                    Otra: {{ historia["antecedente_personal"]["enfermedad_dermatologica"]["otra"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Antecedentes Quirúrgicos</th>
+                <td class="w-75 text-start">
+                    Sí (&nbsp;{% if historia["antecedente_personal"]["quirurgico"]["tiene_cirugia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    No (&nbsp;{% if not historia["antecedente_personal"]["quirurgico"]["tiene_cirugia"] %}X{% endif %}&nbsp;)
+                    <br><br>
+                    Área: {{ historia["antecedente_personal"]["quirurgico"]["area_cirugia"] }} <br>
+                    Motivo: {{ historia["antecedente_personal"]["quirurgico"]["motivo_cirugia"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Utilización de Fármacos</th>
+                <td class="w-75 text-start">
+                    Nombre del Farmaco: {{ historia["antecedente_personal"]["farmaco"]["nombre"] }} <br>
+                    Fármacos por anticoncepción: {{ historia["antecedente_personal"]["farmaco"]["anticoncepcion"] }} <br>
+                    Fármacos por otro motivo: {{ historia["antecedente_personal"]["farmaco"]["otro_motivo"] }} <br><br>
+                    Frecuencia: {{ historia["antecedente_personal"]["farmaco"]["frecuencia"] }} <br>
+                    Dosificación: {{ historia["antecedente_personal"]["farmaco"]["dosificacion"] }} 
+                </td>
+            </tr>
+
+            <tr>
+                <th>Implantes</th>
+                <td class="w-75 text-start">
+                    Anticonceptivo Diu (&nbsp;{% if historia["antecedente_personal"]["implantes"]["diu"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Mamoplastia (&nbsp;{% if historia["antecedente_personal"]["implantes"]["mamoplastia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Articulaciones (&nbsp;{% if historia["antecedente_personal"]["implantes"]["articulacion"] %}X{% endif %}&nbsp;)
+                    Area: {{ historia["antecedente_personal"]["farmaco"]["area_articulacion"] }} 
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["implantes"]["ningun"] %}X{% endif %}&nbsp;) <br><br>
+                    Otro: {{ historia["antecedente_personal"]["implantes"]["otro"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Transtornos Sanguíneos</th>
+                <td class="w-75 text-start">
+                    Problemas plaquetarios (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["plaquetario"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Anemias (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["anemia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Coagulación excesiva  (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["coagulacion_excesiva"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Hemofilia (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["hemofilia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trombocitopenia (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["trombocitopenia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trombocitosis (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["trombocitosis"] %}X{% endif %}&nbsp;)<br><br>
+                    Otro: {{ historia["antecedente_personal"]["transtorno_sanguineo"]["otro"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Enfermedades Mentales</th>
+                <td class="w-75 text-start">
+                    Esquizofrenia (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["esquizofrenia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trastorno bipolar (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["bipolar"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Demencia (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["demecia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trastorno depresivo (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["depresivo"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trombocitosis (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["otro"] %}X{% endif %}&nbsp;)<br><br>
+                    Otro: {{ historia["antecedente_personal"]["enfermedad_mental"]["otro"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Trastornos Alimenticios</th>
+                <td class="w-75 text-start">
+                    Anorexia (&nbsp;{% if historia["antecedente_personal"]["transtorno_alimenticio"]["anorexia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trastorno por atracón (&nbsp;{% if historia["antecedente_personal"]["transtorno_alimenticio"]["atracon"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Bulimia (&nbsp;{% if historia["antecedente_personal"]["transtorno_alimenticio"]["bulimia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["transtorno_alimenticio"]["ninguna"] %}X{% endif %}&nbsp;)<br><br>
+                    Otro: {{ historia["antecedente_personal"]["transtorno_alimenticio"]["otro"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Fobias</th>
+                <td class="w-75 text-start">
+                    Claustrofobia (&nbsp;{% if historia["antecedente_personal"]["fobia"]["claustrofobia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Hidrofobia (&nbsp;{% if historia["antecedente_personal"]["fobia"]["hidrofobia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Iatrofobia (&nbsp;{% if historia["antecedente_personal"]["fobia"]["iatrofobia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Hafefobia (&nbsp;{% if historia["antecedente_personal"]["fobia"]["hafefobia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["fobia"]["ninguna"] %}X{% endif %}&nbsp;)<br><br>
+                    Otro: {{ historia["antecedente_personal"]["fobia"]["otro"] }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table-responsive-sm table-bordered border-dark text-center mt-4">
+        <thead>
+            <tr>
+                <th colspan="2" id="titulo_1_tabla">HÁBITOS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text">
+                <td colspan="2">
+                    <img src="{{ url_for('static', filename='images/piramide-alimentos.jpg') }}"
+                    class="img-fluid rounded-start w-75"
+                    alt="piramide-alimenticia">
+                </td>
+            </tr>
+            <tr>
+                <th>Alergias</th>
+                <td class="w-75 text-start">
+                    Asma (&nbsp;{% if historia["habitos"]["tiempo_entre_comida"]["princial_desayuno"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Rinitis (&nbsp;{% if historia["antecedente_personal"]["alergia"]["rinitis"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Conjuntivitis (&nbsp;{% if historia["antecedente_personal"]["alergia"]["conjuntivitis"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Alimentos (&nbsp;{% if historia["antecedente_personal"]["alergia"]["alimentos"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Medicamentos (&nbsp;{% if historia["antecedente_personal"]["alergia"]["medicamentos"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Látex (&nbsp;{% if historia["antecedente_personal"]["alergia"]["latex"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["alergia"]["ninguna"] %}X{% endif %}&nbsp;)
+                    <br><br>
+                    Otra: {{ historia["antecedente_personal"]["alergia"]["otra"] }}
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>Enfermedades Dermatológicas</th>
+                <td class="w-75 text-start">
+                    Dermatitis atópica (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["dermatitis_atopica"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Acné (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["acne"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Urticaria (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["urticaria"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Vitíligo (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["vitiligo"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Queratosis (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["queratosis"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Sarna (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["sarna"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Pie de atleta (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["pie_atleta"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Hongos (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["hongos"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["enfermedad_dermatologica"]["ninguna"] %}X{% endif %}&nbsp;)
+                    <br><br>
+                    Otra: {{ historia["antecedente_personal"]["enfermedad_dermatologica"]["otra"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Antecedentes Quirúrgicos</th>
+                <td class="w-75 text-start">
+                    Sí (&nbsp;{% if historia["antecedente_personal"]["quirurgico"]["tiene_cirugia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    No (&nbsp;{% if not historia["antecedente_personal"]["quirurgico"]["tiene_cirugia"] %}X{% endif %}&nbsp;)
+                    <br><br>
+                    Área: {{ historia["antecedente_personal"]["quirurgico"]["area_cirugia"] }} <br>
+                    Motivo: {{ historia["antecedente_personal"]["quirurgico"]["motivo_cirugia"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Utilización de Fármacos</th>
+                <td class="w-75 text-start">
+                    Nombre del Farmaco: {{ historia["antecedente_personal"]["farmaco"]["nombre"] }} <br>
+                    Fármacos por anticoncepción: {{ historia["antecedente_personal"]["farmaco"]["anticoncepcion"] }} <br>
+                    Fármacos por otro motivo: {{ historia["antecedente_personal"]["farmaco"]["otro_motivo"] }} <br><br>
+                    Frecuencia: {{ historia["antecedente_personal"]["farmaco"]["frecuencia"] }} <br>
+                    Dosificación: {{ historia["antecedente_personal"]["farmaco"]["dosificacion"] }} 
+                </td>
+            </tr>
+
+            <tr>
+                <th>Implantes</th>
+                <td class="w-75 text-start">
+                    Anticonceptivo Diu (&nbsp;{% if historia["antecedente_personal"]["implantes"]["diu"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Mamoplastia (&nbsp;{% if historia["antecedente_personal"]["implantes"]["mamoplastia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Articulaciones (&nbsp;{% if historia["antecedente_personal"]["implantes"]["articulacion"] %}X{% endif %}&nbsp;)
+                    Area: {{ historia["antecedente_personal"]["farmaco"]["area_articulacion"] }} 
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["implantes"]["ningun"] %}X{% endif %}&nbsp;) <br><br>
+                    Otro: {{ historia["antecedente_personal"]["implantes"]["otro"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Transtornos Sanguíneos</th>
+                <td class="w-75 text-start">
+                    Problemas plaquetarios (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["plaquetario"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Anemias (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["anemia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Coagulación excesiva  (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["coagulacion_excesiva"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Hemofilia (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["hemofilia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trombocitopenia (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["trombocitopenia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trombocitosis (&nbsp;{% if historia["antecedente_personal"]["transtorno_sanguineo"]["trombocitosis"] %}X{% endif %}&nbsp;)<br><br>
+                    Otro: {{ historia["antecedente_personal"]["transtorno_sanguineo"]["otro"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Enfermedades Mentales</th>
+                <td class="w-75 text-start">
+                    Esquizofrenia (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["esquizofrenia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trastorno bipolar (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["bipolar"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Demencia (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["demecia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trastorno depresivo (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["depresivo"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trombocitosis (&nbsp;{% if historia["antecedente_personal"]["enfermedad_mental"]["otro"] %}X{% endif %}&nbsp;)<br><br>
+                    Otro: {{ historia["antecedente_personal"]["enfermedad_mental"]["otro"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Trastornos Alimenticios</th>
+                <td class="w-75 text-start">
+                    Anorexia (&nbsp;{% if historia["antecedente_personal"]["transtorno_alimenticio"]["anorexia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Trastorno por atracón (&nbsp;{% if historia["antecedente_personal"]["transtorno_alimenticio"]["atracon"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Bulimia (&nbsp;{% if historia["antecedente_personal"]["transtorno_alimenticio"]["bulimia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["transtorno_alimenticio"]["ninguna"] %}X{% endif %}&nbsp;)<br><br>
+                    Otro: {{ historia["antecedente_personal"]["transtorno_alimenticio"]["otro"] }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Fobias</th>
+                <td class="w-75 text-start">
+                    Claustrofobia (&nbsp;{% if historia["antecedente_personal"]["fobia"]["claustrofobia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Hidrofobia (&nbsp;{% if historia["antecedente_personal"]["fobia"]["hidrofobia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Iatrofobia (&nbsp;{% if historia["antecedente_personal"]["fobia"]["iatrofobia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Hafefobia (&nbsp;{% if historia["antecedente_personal"]["fobia"]["hafefobia"] %}X{% endif %}&nbsp;)
+                    &nbsp;
+                    Ninguna (&nbsp;{% if historia["antecedente_personal"]["fobia"]["ninguna"] %}X{% endif %}&nbsp;)<br><br>
+                    Otro: {{ historia["antecedente_personal"]["fobia"]["otro"] }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>

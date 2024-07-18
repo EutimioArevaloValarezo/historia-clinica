@@ -6,8 +6,7 @@
         <div class="row g-3">
             <div class="col-md-12 text-center">
                 <img src="{{ url_for('static', filename='images/piramide-alimentos.jpg') }}"
-                    class="img-fluid rounded-start w-75"
-                    alt="piramide-alimenticia">
+                    class="img-fluid rounded-start w-75" alt="piramide-alimenticia">
             </div>
         </div>
 
@@ -18,23 +17,24 @@
             <div class="col-md-8">
                 <div class="form-check form-check-inline">
                     <input class="input-custom form-check-input" type="radio" id="checkUnaComida"
-                        value="Asma" name="habito_nro_comidas">
+                        name="habito_nro_comidas" value="1">
                     <label class="input-custom form-check-label" for="checkUnaComida">Una comida al
                         día</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkDosComidas" name="habito_nro_comidas">
+                    <input class="input-custom form-check-input" type="radio" id="checkDosComidas"
+                        name="habito_nro_comidas" value="2">
                     <label class="input-custom form-check-label" for="checkDosComidas">Dos comidas al día</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="input-custom form-check-input" type="radio" id="checkTresComidas"
-                        name="habito_nro_comidas">
+                        name="habito_nro_comidas" value="3">
                     <label class="input-custom form-check-label" for="checkTresComidas">Tres comidas al día</label>
                 </div>
             </div>
             <div class="form-floating col-md-2">
                 <input type="number" class="input-custom form-control" id="textOtraComida" placeholder="Otra"
-                    name="habito_otro_nro_comidas">
+                    name="habito_otro_nro_comidas" min="4">
                 <label for="textOtraComida">Otra</label>
             </div>
         </div>
@@ -45,12 +45,13 @@
             </div>
             <div class="col-md-10">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkDesayuno"
-                        value="Asma" name="comida_desayuno">
+                    <input class="input-custom form-check-input" type="checkbox" id="checkDesayuno" value="Asma"
+                        name="comida_desayuno">
                     <label class="input-custom form-check-label" for="checkDesayuno"> Desayuno</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="checkbox" id="checkAlmuerzo" name="comida_almuerzo">
+                    <input class="input-custom form-check-input" type="checkbox" id="checkAlmuerzo"
+                        name="comida_almuerzo">
                     <label class="input-custom form-check-label" for="checkAlmuerzo">Almuerzo</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -64,13 +65,14 @@
             </div>
             <div class="col-md-8">
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkRefrigerioDosHoras"
-                        value="Asma" name="tiempo_refrigerio">
+                    <input class="input-custom form-check-input" type="radio" id="checkRefrigerioDosHoras" value="Asma"
+                        name="tiempo_refrigerio">
                     <label class="input-custom form-check-label" for="checkRefrigerioDosHoras">Refrigerios: Cada 2
                         horas</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="input-custom form-check-input" type="radio" id="checkRefrigerioTresHoras" name="tiempo_refrigerio">
+                    <input class="input-custom form-check-input" type="radio" id="checkRefrigerioTresHoras"
+                        name="tiempo_refrigerio">
                     <label class="input-custom form-check-label" for="checkRefrigerioTresHoras">Cada 3 horas</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -86,8 +88,8 @@
                 </div>
             </div>
             <div class="form-floating col-md-2">
-                <input type="number" class="input-custom form-control" id="textOtroTiempoRefrigerio" placeholder="Otro tiempo"
-                    name="otro_tiempo_refrigerio">
+                <input type="number" class="input-custom form-control" id="textOtroTiempoRefrigerio"
+                    placeholder="Otro tiempo" name="otro_tiempo_refrigerio">
                 <label for="textOtroTiempoRefrigerio">Otro tiempo</label>
             </div>
         </div>
@@ -97,8 +99,8 @@
                 <h3 class="input-custom text-center">Consumo de agua</h3>
             </div>
             <div class="form-floating col-md-10">
-                <input type="number" class="input-custom form-control" id="textNroVasosAgua" placeholder="Nro. de vasos al día"
-                    name="nro_vasos_agua">
+                <input type="number" class="input-custom form-control" id="textNroVasosAgua"
+                    placeholder="Nro. de vasos al día" name="nro_vasos_agua">
                 <label for="textNroVasosAgua">Nro. de vasos al día</label>
             </div>
         </div>

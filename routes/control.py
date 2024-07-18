@@ -95,6 +95,7 @@ def guardar_historia_clinica(request):
                 'rinitis': True if request.form.get('alergia_rinitis') else False,
                 'conjuntivitis': True if request.form.get('alergia_conjuntivitis') else False,
                 'alimentos': True if request.form.get('alergia_alimentos') else False,
+                'medicamentos': True if request.form.get('alergia_medicamentos') else False,
                 'latex': True if request.form.get('alergia_latex') else False,
                 'ninguna': True if request.form.get('alergia_ninguna') else False,
                 'otra': request.form.get('alergia_otra') 
@@ -352,3 +353,7 @@ def guardar_historia_clinica(request):
 def obtener_historias():
     historias = list(db['historia'].find())
     return historias
+
+def obtener_historia(id):
+    historia = db["historia"].find_one({ '_id': id })
+    return historia
