@@ -4,30 +4,31 @@
 
 {{ toastr.include_toastr_js() }}
 
-<style>
-    /* Position text in the middle of the page/image */
-    .bg-text {
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/opacity/see-through */
-        color: white;
-        font-weight: bold;
-        border: 3px solid #f1f1f1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        width: 80%;
-        padding: 20px;
-        text-align: center;
-    }
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
-<div class="bg-text">
-    <!-- <h2>Registro de episodios de salud y enfermedad de una persona</h2> -->
-    <h1 style="font-size:50px">HISTORIA CLÍNICA TRAUMATOLÓGICA DIGITAL</h1>
+
+<div class="container">
+    <div class="row align-items-center vh-100">
+        <div class="col-12 mx-auto">
+            <div class="card shadow border">
+                <div class="card-body d-flex flex-column align-items-center text-center">
+                    <img src="{{ url_for('static', filename='images/logo.jpeg') }}" 
+                         class="rounded-circle w-50 animate__animated" 
+                         alt="FisioHistory" 
+                         id="animated-img">
+                    <h1 class="mt-4 animate__animated" id="animated-h1">HISTORIA CLÍNICA TRAUMATOLÓGICA DIGITAL</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    window.onload = function() {
+        document.getElementById('animated-img').classList.add('animate__zoomIn');
+        document.getElementById('animated-h1').classList.add('animate__fadeInUp');
+    };
+</script>
+
 
 {% endblock %}
